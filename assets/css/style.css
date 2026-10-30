@@ -1,0 +1,119 @@
+:root {
+  --bg: #0b1220;
+  --surface: #121c2f;
+  --elevated: #18243a;
+  --line: #1e3a5f;
+  --text: #f3efe4;
+  --muted: #b7c0ce;
+  --gold: #c9a227;
+  --gold-soft: #e8d48b;
+  --max: 40rem;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+a { color: var(--gold-soft); }
+a:hover { color: var(--text); }
+
+.wrap {
+  width: min(var(--max), calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.brand {
+  color: var(--text);
+  text-decoration: none;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Yu Mincho", serif;
+  letter-spacing: 0.04em;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav a[aria-current="page"],
+.nav a:hover {
+  color: var(--gold-soft);
+}
+
+main { padding: 2.5rem 0 3rem; }
+
+.kicker {
+  margin: 0 0 0.5rem;
+  color: var(--gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+}
+
+h1, h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Yu Mincho", serif;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+h1 { margin: 0 0 1rem; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+
+h2 {
+  margin: 2rem 0 0.6rem;
+  font-size: 1.25rem;
+  color: var(--gold-soft);
+}
+
+.lead { font-size: 1.12rem; }
+
+.note, .muted { color: var(--muted); }
+
+ol, ul { padding-left: 1.2rem; }
+
+li + li { margin-top: 0.35rem; }
+
+.rule {
+  width: 3rem;
+  height: 1px;
+  margin: 1.5rem 0;
+  background: var(--gold);
+  border: 0;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.site-footer .wrap { padding: 1.25rem 0 2rem; }
+
+button, a { min-height: 0; }
