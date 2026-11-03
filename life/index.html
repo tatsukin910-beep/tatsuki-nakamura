@@ -6,9 +6,6 @@
   <title>中村達希の記録</title>
   <meta name="robots" content="noindex">
   <meta name="description" content="日常を置く場所です。研究のモデルではありません。">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -17,7 +14,11 @@
       --date: #6B5E4E;
       --rule: #E3DCD0;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       background-color: var(--paper);
       color: var(--ink);
@@ -26,23 +27,13 @@
       letter-spacing: 0.03em;
       -webkit-font-smoothing: antialiased;
     }
-    .skip {
-      position: absolute;
-      left: 1rem;
-      top: 0;
-      transform: translateY(-120%);
-      background: var(--ink);
-      color: var(--paper);
-      font-family: system-ui, sans-serif;
-      text-decoration: none;
-      padding: 0.4rem 0.7rem;
-    }
-    .skip:focus { transform: none; outline: 2px solid var(--paper); outline-offset: 2px; }
+    /* 約36文字が自然に収まる手帳の紙幅 */
     .notebook {
       max-width: 36rem;
       margin: 0 auto;
       padding: 3rem 1.5rem 5rem;
     }
+    /* 1. 欄外 */
     .margin-header {
       display: flex;
       justify-content: space-between;
@@ -54,15 +45,12 @@
       margin-bottom: 3rem;
       font-family: system-ui, sans-serif;
     }
-    .margin-header h1 {
-      font-size: inherit;
-      font-weight: inherit;
-      font-family: inherit;
-      letter-spacing: inherit;
-      line-height: inherit;
-      color: inherit;
+    /* 2. 最初の一文 */
+    .lead {
+      font-size: 1.05rem;
+      margin-bottom: 3.5rem;
     }
-    .lead { font-size: 1.05rem; margin-bottom: 3.5rem; }
+    /* 3. これからの見出し（箱にせず、線だけの項目） */
     .sections-index {
       display: flex;
       gap: 1.5rem;
@@ -74,11 +62,15 @@
       color: var(--date);
       font-family: system-ui, sans-serif;
     }
+    .sections-index li {
+      position: relative;
+    }
     .sections-index li + li::before {
       content: "/";
       margin-right: 1.5rem;
       color: var(--rule);
     }
+    /* 4. あとから足す文章（左に日付、右に文章。1件が1段） */
     .records-list {
       display: flex;
       flex-direction: column;
@@ -97,14 +89,22 @@
       font-family: ui-monospace, SFMono-Regular, monospace;
       white-space: nowrap;
     }
-    .record-body { font-size: 0.98rem; }
-    .record-body p + p { margin-top: 0.8rem; }
+    .record-body {
+      font-size: 0.98rem;
+    }
+    .record-body p + p {
+      margin-top: 0.8rem;
+    }
+    /* 5. いちばん下の一行と文字リンク */
     .footer-boundary {
       border-top: 1px solid var(--rule);
       padding-top: 2rem;
       font-size: 0.88rem;
     }
-    .footer-lead { color: var(--date); margin-bottom: 1rem; }
+    .footer-lead {
+      color: var(--date);
+      margin-bottom: 1rem;
+    }
     .footer-links {
       display: flex;
       flex-wrap: wrap;
@@ -116,42 +116,53 @@
       text-decoration: underline;
       text-underline-offset: 4px;
       text-decoration-color: var(--rule);
+      transition: text-decoration-color 0.2s;
     }
-    .footer-links a:hover { text-decoration-color: var(--ink); }
+    .footer-links a:hover {
+      text-decoration-color: var(--ink);
+    }
     .footer-links a:focus-visible {
       outline: 2px solid var(--ink);
       outline-offset: 3px;
     }
+    /* モバイル表示時の日付と文章の並び */
     @media (max-width: 480px) {
-      .record-entry { grid-template-columns: 1fr; row-gap: 0.3rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; }
+      .record-entry {
+        grid-template-columns: 1fr;
+        row-gap: 0.3rem;
+      }
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#content">本文へ進む</a>
-  <main class="notebook" id="content">
+  <main class="notebook">
+    <!-- 1. 欄外 -->
     <header class="margin-header">
-      <h1>中村達希の記録</h1>
-      <p>研究とは別</p>
+      <span>中村達希の記録</span>
+      <span>研究とは別</span>
     </header>
+    <!-- 2. 最初の一文 -->
     <p class="lead">日常を置く場所です。研究のモデルではありません。</p>
-    <ul class="sections-index" aria-label="これからの見出し">
+    <!-- 3. これからの見出し（線だけの項目） -->
+    <ul class="sections-index">
       <li>いま</li>
       <li>これまで</li>
       <li>書いておきたいこと</li>
     </ul>
+    <!-- 4. あとから足す文章（中身はこれから本人が書く場所） -->
     <div class="records-list">
-      <!--
-        文章を足すときは、この1段を増やします。
-        <article class="record-entry">
-          <time class="record-date" datetime="2026-11-04">2026-11-04</time>
-          <div class="record-body"><p>ここに文章が入ります。</p></div>
-        </article>
+      <!-- 
+      文章を足すときは、この1段（record-entry）を上または下に増やしていきます。
+      写真の枠もボタンもありません。
+      <article class="record-entry">
+        <time class="record-date">2026-11-04</time>
+        <div class="record-body">
+          <p>ここに文章が入ります。</p>
+        </div>
+      </article>
       -->
     </div>
+    <!-- 5. いちばん下の一行 -->
     <footer class="footer-boundary">
       <p class="footer-lead">構造の話は、研究サイトにあります。</p>
       <ul class="footer-links">
