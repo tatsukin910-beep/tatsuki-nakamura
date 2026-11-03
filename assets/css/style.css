@@ -2120,3 +2120,14 @@ html[data-theme="invert"] video {
 @media (max-width: 640px) {
   .cma-home-root #cma-header .inner { align-items: flex-start; }
 }
+
+.cma-home-root .gate-link {
+  color: var(--cma-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.cma-home-root .gate-link:hover { color: var(--cma-gold); }
