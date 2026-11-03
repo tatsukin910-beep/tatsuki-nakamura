@@ -9,31 +9,55 @@
   <style>
     :root {
       color-scheme: light;
-      --paper: #F7F3EC;
+      --paper: #F6EFE4;
       --ink: #1C1915;
       --date: #6B5E4E;
       --rule: #E3DCD0;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--paper);
+      min-height: 100vh;
       color: var(--ink);
       font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
       line-height: 1.9;
       letter-spacing: 0.03em;
-      -webkit-font-smoothing: antialiased;
+      background:
+        radial-gradient(900px 520px at 50% -8%, #FFF9F2 0%, rgba(255, 249, 242, 0) 60%),
+        radial-gradient(700px 480px at 100% 100%, rgba(214, 176, 138, 0.35), transparent 55%),
+        linear-gradient(180deg, #F8F1E6 0%, #EAD8C2 100%);
     }
-    /* 約36文字が自然に収まる手帳の紙幅 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+    .snow {
+      position: fixed;
+      left: 0;
+      top: -100vh;
+      width: 100%;
+      height: 200vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .snow-near { animation: snow-fall 26s linear infinite; }
+    .snow-far { animation: snow-fall 40s linear infinite; opacity: 0.55; }
+    .snow circle { fill: #fffaf3; }
+    @keyframes snow-fall {
+      from { transform: translateY(0); }
+      to { transform: translateY(50%); }
+    }
     .notebook {
+      position: relative;
+      z-index: 2;
       max-width: 36rem;
       margin: 0 auto;
       padding: 3rem 1.5rem 5rem;
     }
-    /* 1. 欄外 */
     .margin-header {
       display: flex;
       justify-content: space-between;
@@ -45,12 +69,7 @@
       margin-bottom: 3rem;
       font-family: system-ui, sans-serif;
     }
-    /* 2. 最初の一文 */
-    .lead {
-      font-size: 1.05rem;
-      margin-bottom: 3.5rem;
-    }
-    /* 3. これからの見出し（箱にせず、線だけの項目） */
+    .lead { font-size: 1.05rem; margin-bottom: 3.5rem; }
     .sections-index {
       display: flex;
       gap: 1.5rem;
@@ -62,15 +81,11 @@
       color: var(--date);
       font-family: system-ui, sans-serif;
     }
-    .sections-index li {
-      position: relative;
-    }
     .sections-index li + li::before {
       content: "/";
       margin-right: 1.5rem;
       color: var(--rule);
     }
-    /* 4. あとから足す文章（左に日付、右に文章。1件が1段） */
     .records-list {
       display: flex;
       flex-direction: column;
@@ -89,22 +104,15 @@
       font-family: ui-monospace, SFMono-Regular, monospace;
       white-space: nowrap;
     }
-    .record-body {
-      font-size: 0.98rem;
-    }
-    .record-body p + p {
-      margin-top: 0.8rem;
-    }
-    /* 5. いちばん下の一行と文字リンク */
+    .record-body { font-size: 0.98rem; }
+    .record-body p + p { margin-top: 0.8rem; }
     .footer-boundary {
       border-top: 1px solid var(--rule);
       padding-top: 2rem;
       font-size: 0.88rem;
     }
-    .footer-lead {
-      color: var(--date);
-      margin-bottom: 1rem;
-    }
+    .footer-lead { color: var(--date); margin-bottom: 1rem; }
+    .footer-lead a { color: var(--date); }
     .footer-links {
       display: flex;
       flex-wrap: wrap;
@@ -116,42 +124,68 @@
       text-decoration: underline;
       text-underline-offset: 4px;
       text-decoration-color: var(--rule);
-      transition: text-decoration-color 0.2s;
     }
-    .footer-links a:hover {
-      text-decoration-color: var(--ink);
-    }
+    .footer-links a:hover { text-decoration-color: var(--ink); }
     .footer-links a:focus-visible {
       outline: 2px solid var(--ink);
       outline-offset: 3px;
     }
-    /* モバイル表示時の日付と文章の並び */
     @media (max-width: 480px) {
-      .record-entry {
-        grid-template-columns: 1fr;
-        row-gap: 0.3rem;
-      }
+      .record-entry { grid-template-columns: 1fr; row-gap: 0.3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .snow { display: none; }
     }
   </style>
 </head>
 <body>
+  <svg class="snow snow-far" viewBox="0 0 400 800" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
+    <circle cx="30" cy="40" r="1.1" />
+    <circle cx="120" cy="120" r="0.8" />
+    <circle cx="210" cy="70" r="1.2" />
+    <circle cx="300" cy="160" r="0.9" />
+    <circle cx="360" cy="40" r="1" />
+    <circle cx="70" cy="240" r="0.8" />
+    <circle cx="180" cy="280" r="1.1" />
+    <circle cx="260" cy="220" r="0.7" />
+    <circle cx="40" cy="360" r="1" />
+    <circle cx="150" cy="420" r="0.9" />
+    <circle cx="330" cy="390" r="1.2" />
+    <circle cx="90" cy="520" r="0.8" />
+    <circle cx="240" cy="560" r="1" />
+    <circle cx="370" cy="600" r="0.8" />
+    <circle cx="20" cy="680" r="1.1" />
+    <circle cx="190" cy="730" r="0.9" />
+  </svg>
+  <svg class="snow snow-near" viewBox="0 0 400 800" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false">
+    <circle cx="60" cy="20" r="1.6" />
+    <circle cx="160" cy="90" r="1.3" />
+    <circle cx="250" cy="30" r="1.8" />
+    <circle cx="340" cy="140" r="1.4" />
+    <circle cx="20" cy="180" r="1.5" />
+    <circle cx="110" cy="260" r="1.2" />
+    <circle cx="300" cy="250" r="1.7" />
+    <circle cx="200" cy="340" r="1.4" />
+    <circle cx="50" cy="430" r="1.6" />
+    <circle cx="280" cy="480" r="1.3" />
+    <circle cx="150" cy="560" r="1.8" />
+    <circle cx="360" cy="620" r="1.4" />
+    <circle cx="80" cy="700" r="1.5" />
+    <circle cx="230" cy="760" r="1.2" />
+  </svg>
   <main class="notebook">
-    <!-- 1. 欄外 -->
     <header class="margin-header">
       <span>中村達希の記録</span>
       <span>研究とは別</span>
     </header>
-    <!-- 2. 最初の一文 -->
     <p class="lead">なにげない一日を、ここに置く。<br>研究のモデルには、しない。</p>
-    <!-- 3. これからの見出し（線だけの項目） -->
     <ul class="sections-index">
       <li>いま</li>
       <li>これまで</li>
       <li>書いておきたいこと</li>
     </ul>
-    <!-- 4. あとから足す文章（中身はこれから本人が書く場所） -->
     <div class="records-list">
-      <!-- 
+      <!--
       文章を足すときは、この1段（record-entry）を上または下に増やしていきます。
       写真の枠もボタンもありません。
       <article class="record-entry">
@@ -162,7 +196,6 @@
       </article>
       -->
     </div>
-    <!-- 5. いちばん下の一行 -->
     <footer class="footer-boundary">
       <p class="footer-lead"><a href="../">入口</a>から分かれた、日常のページです。</p>
       <ul class="footer-links">
