@@ -1,0 +1,348 @@
+<!-- CMA Section 05 Methodology | Warm Academic Edition (Ultra-Light GSS Compatible)
+設計方針:
+1. GSS（グローバルCSS）に完全対応し、余分なフォールバック変数をすべて削除
+2. 威圧的な注意書きのトーンを落とし、知的で落ち着いた佇まいへ統一
+3. 抽象化プロセス図解、Case-Based タイムライン、比較表などの要素を完全保持
+-->
+<style>
+#section05.cma05-method-wrap {
+width: 100%;
+max-width: 1000px;
+margin: 0 auto;
+padding: 40px 20px 80px;
+color: var(--cma-text);
+font-family: "Noto Sans JP", system-ui, sans-serif;
+box-sizing: border-box;
+text-align: left;
+scroll-margin-top: 80px;
+overflow-wrap: anywhere;
+}
+#section05, #section05 * { box-sizing: border-box; }
+#section05 a:focus-visible { outline: 3px solid var(--cma-gold); outline-offset: 4px; border-radius: 4px; }
+#section05 .cma05-card {
+background: var(--cma-surface);
+border: 1px solid var(--cma-border);
+border-radius: 24px;
+padding: clamp(28px, 5vw, 56px);
+box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+}
+#section05 .cma05-title {
+font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+color: var(--cma-text);
+border-bottom: 3px solid var(--cma-gold);
+padding-bottom: 0.8rem;
+margin: 0 0 2rem;
+font-family: Georgia, serif;
+}
+#section05 .cma05-h3 {
+font-size: 1.25rem;
+color: var(--cma-text);
+margin: 3rem 0 1.2rem;
+display: flex;
+align-items: center;
+font-family: Georgia, serif;
+}
+#section05 .cma05-h3::before {
+content: "";
+display: inline-block;
+width: 4px;
+height: 1.1em;
+margin-right: 10px;
+background: var(--cma-gold);
+flex-shrink: 0;
+}
+#section05 .cma05-lead {
+font-size: 1rem;
+color: var(--cma-secondary);
+line-height: 1.85;
+margin-bottom: 2rem;
+}
+/* 抽象化プロセス図解 */
+#section05 .cma05-abstraction {
+background: var(--cma-card-bg);
+border: 1px solid var(--cma-border);
+border-radius: 18px;
+padding: 2rem 1.5rem;
+margin-bottom: 3rem;
+text-align: center;
+font-family: ui-monospace, monospace;
+color: var(--cma-text);
+line-height: 2.2;
+font-size: 0.9rem;
+font-weight: 700;
+box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+}
+#section05 .cma05-abstraction .arrow {
+color: var(--cma-gold);
+font-weight: bold;
+font-size: 1.2rem;
+}
+/* タイムライン (Case-Based) */
+#section05 .cma05-timeline {
+position: relative;
+padding-left: 30px;
+margin-bottom: 3.5rem;
+}
+#section05 .cma05-timeline::before {
+content: "";
+position: absolute;
+left: 8px;
+top: 0;
+bottom: 0;
+width: 3px;
+background: var(--cma-border);
+border-radius: 10px;
+}
+#section05 .cma05-stage {
+position: relative;
+background: var(--cma-surface);
+border: 1px solid var(--cma-border);
+border-left: 4px solid var(--cma-gold);
+border-radius: 0 16px 16px 0;
+padding: 1.6rem;
+margin-bottom: 1.5rem;
+box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+#section05 .cma05-stage::before {
+content: "";
+position: absolute;
+left: -29px;
+top: 26px;
+width: 12px;
+height: 12px;
+background: var(--cma-gold);
+border-radius: 50%;
+border: 3px solid var(--cma-surface);
+box-shadow: 0 0 0 2px var(--cma-gold);
+}
+#section05 .cma05-stage h4 {
+margin: 0 0 8px;
+color: var(--cma-text);
+font-size: 1.1rem;
+font-weight: 700;
+}
+#section05 .cma05-stage p {
+margin: 0;
+color: var(--cma-secondary);
+line-height: 1.7;
+font-size: 0.95rem;
+}
+/* 比較表 */
+#section05 .cma05-table-wrap {
+overflow-x: auto;
+border-radius: 16px;
+border: 1px solid var(--cma-border);
+margin-bottom: 2.5rem;
+}
+#section05 table {
+width: 100%;
+border-collapse: collapse;
+min-width: 650px;
+background: var(--cma-surface);
+}
+#section05 th {
+background: var(--cma-gold-soft);
+color: var(--cma-gold);
+padding: 16px;
+text-align: left;
+font-size: 0.95rem;
+font-weight: 800;
+border-bottom: 1px solid var(--cma-border);
+}
+#section05 td {
+padding: 16px;
+border-bottom: 1px solid var(--cma-border);
+vertical-align: top;
+line-height: 1.7;
+color: var(--cma-secondary);
+font-size: 0.95rem;
+}
+#section05 .cma05-framework {
+font-weight: 800;
+color: var(--cma-text);
+}
+/* シミュレーターカード */
+#section05 .cma05-tool-card {
+background: var(--cma-surface);
+border: 2px solid var(--cma-gold-soft);
+border-radius: 20px;
+padding: 28px 30px;
+margin: 2.5rem 0 3rem;
+box-shadow: 0 8px 24px rgba(168, 123, 29, 0.06);
+}
+#section05 .cma05-tool-badge {
+display: inline-block;
+font-family: ui-monospace, monospace;
+font-size: 0.78rem;
+font-weight: 700;
+color: var(--cma-gold);
+background: var(--cma-gold-soft);
+border: 1px solid var(--cma-gold-faint);
+padding: 4px 12px;
+border-radius: 6px;
+margin-bottom: 12px;
+letter-spacing: 0.08em;
+}
+#section05 .cma05-tool-title {
+font-size: 1.25rem;
+font-weight: 800;
+color: var(--cma-text);
+margin-bottom: 8px;
+line-height: 1.4;
+}
+#section05 .cma05-tool-desc {
+font-size: 0.93rem;
+color: var(--cma-secondary);
+line-height: 1.7;
+margin-bottom: 20px;
+}
+#section05 .cma05-btn-tool {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 11px 24px;
+background: var(--cma-gold);
+color: #FFFFFF !important;
+font-size: 0.9rem;
+font-weight: 800;
+border-radius: 30px;
+text-decoration: none;
+font-family: "Noto Sans JP", system-ui, sans-serif;
+transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+#section05 .cma05-btn-tool:hover {
+background: #8F6816;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(168, 123, 29, 0.25);
+}
+/* 3方向ナビゲーション */
+#section05 .cma05-nav-area {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 12px;
+margin-top: 50px;
+}
+#section05 .cma05-nav-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+min-height: 48px;
+padding: 12px 20px;
+background: var(--cma-surface);
+border: 1px solid var(--cma-border);
+border-radius: 12px;
+color: var(--cma-text) !important;
+text-decoration: none;
+font-size: 0.9rem;
+font-weight: 700;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+transition: all 0.2s ease;
+}
+#section05 .cma05-nav-btn:hover {
+background: var(--cma-gold-soft);
+border-color: var(--cma-gold);
+color: var(--cma-gold) !important;
+transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+#section05.cma05-method-wrap { padding: 24px 12px 60px; }
+#section05 .cma05-card { padding: 2rem 1.2rem; border-radius: 18px; }
+#section05 .cma05-nav-area { flex-direction: column; }
+#section05 .cma05-nav-btn { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+#section05 .cma05-btn-tool,
+#section05 .cma05-nav-btn {
+transition: none !important;
+transform: none !important;
+}
+}
+</style>
+<section id="section05" class="cma05-method-wrap" aria-labelledby="s05-title" lang="ja">
+<div class="cma05-card">
+<h2 id="s05-title" class="cma05-title">05 Development & Comparison</h2>
+<div class="cma05-lead">
+<p>
+CMAフレームワークは、単一の当事者体験（N=1）の記述にとどまらず、個人の心理や病理に帰着させない構造分析モデルとして体系化されています。ここでは、経験記録から理論モデルへの抽象化プロセスと、既存の主要学術概念との比較を提示します。
+</p>
+</div>
+<!-- 抽象化プロセス図解 -->
+<h3 class="cma05-h3">経験から理論への抽象化プロセス</h3>
+<div class="cma05-abstraction" aria-label="経験からモデルへの抽象化フロー">
+<span>実存的経験記録 (N=1)</span>
+<span class="arrow"> ↓ </span>
+<span>記述の客観化・要素分解</span>
+<span class="arrow"> ↓ </span>
+<span>閉鎖環境における共通力学の抽出</span>
+<span class="arrow"> ↓ </span>
+<span><strong>CMA 5層構造モデル（Theory Definition v2.0）</strong></span>
+</div>
+<!-- タイムライン (Case-Based) -->
+<h3 class="cma05-h3">閉鎖構造の深化フェーズ（Case-Based）</h3>
+<div class="cma05-timeline">
+<div class="cma05-stage">
+<h4>Phase 1: 境界の浸食と初期孤立</h4>
+<p>外部からの情報や客観的基準が遮断され、閉鎖的な関係性の中だけで評価や規範が決定づけられていく初期段階。</p>
+</div>
+<div class="cma05-stage">
+<h4>Phase 2: 選択肢の剥奪と依存の固定化</h4>
+<p>生活基盤や意思決定の主導権が偏り、環境から離脱するための手段やリソースへのアクセスが制度的・物理的に制約される段階。</p>
+</div>
+<div class="cma05-stage">
+<h4>Phase 3: 異常性の日常化（正常化）</h4>
+<p>不当な処遇や不均衡な権力勾配が日常の「当たり前」として内面化され、被害当事者自身も違和感を訴える語彙を失う段階。</p>
+</div>
+<div class="cma05-stage">
+<h4>Phase 4: 制度的不応答と身体化の帰結</h4>
+<p>外部機関への相談やSOSが手続きの狭間に埋もれて機能せず、出口を閉ざされた持続的過負荷が心身の症状・麻痺として定着する段階。</p>
+</div>
+</div>
+<!-- 比較表 -->
+<h3 class="cma05-h3">既存理論との比較と独自性</h3>
+<div class="cma05-table-wrap">
+<table>
+<thead>
+<tr>
+<th>概念・枠組み</th>
+<th>主な着眼点</th>
+<th>CMAとの相違・拡張性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="cma05-framework">家庭内暴力・DV論（Coercive Control）</td>
+<td>親密な関係における支配・管理行動の持続。</td>
+<td>家族間に限らず、福祉施設・医療・閉鎖的組織全般へ適用可能。制度側の不応答を構造の決定打として組み込む点。</td>
+</tr>
+<tr>
+<td class="cma05-framework">全制的施設論（Total Institutions）</td>
+<td>閉鎖機関における個人のアイデンティティ剥奪。</td>
+<td>公的施設だけでなく、インフォーマルな私的空間や小規模コミュニティに潜在する類似の閉鎖力学を説明可能。</td>
+</tr>
+<tr>
+<td class="cma05-framework">医学・診断モデル（PTSD / CPTSD）</td>
+<td>トラウマ体験による個人の精神・身体的症状。</td>
+<td>CMAは病名や診断ではなく、状態を生み出し持続させる「環境と制度の力学」を解明する構造分析である点。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- シミュレーター・探索案内 -->
+<div class="cma05-tool-card">
+<span class="cma05-tool-badge">ANALYSIS & EXPLORATION</span>
+<div class="cma05-tool-title">構造分析フレームワークの活用</div>
+<div class="cma05-tool-desc">
+CMAモデルの5層構造（孤立・依存・正常化・制度的不応答・身体化）に基づき、各層の相互作用や評価基準を詳しく確認できます。
+</div>
+<a href="#section03" class="cma05-btn-tool">03 コアメカニズムで詳細を見る →</a>
+</div>
+</div>
+<!-- ナビゲーション -->
+<nav class="cma05-nav-area" aria-label="セクション間ナビゲーション">
+<a href="#section03" class="cma05-nav-btn">← 03 コアメカニズムへ</a>
+<a href="#home" class="cma05-nav-btn">↑ 地図へ（HOME）</a>
+<a href="#section06" class="cma05-nav-btn">06 研究アーカイブへ →</a>
+</nav>
+</section>
