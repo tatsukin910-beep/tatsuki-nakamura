@@ -20,16 +20,17 @@
       "name": "中村達希",
       "alternateName": [
         "Tatsuki Nakamura",
-        "Nakamura Tatsuki"
+        "Nakamura Tatsuki",
+        "たっちゃん"
       ],
       "url": "https://tatsuki-nakamura.com/",
       "image": {
         "@type": "ImageObject",
         "url": "https://tatsuki-nakamura.com/assets/images/image01.jpg?v=5a213fed"
       },
-      "jobTitle": "Independent Researcher / Lived Experience Researcher",
+      "jobTitle": "当事者研究者・独立研究者",
       "disambiguatingDescription": "当事者研究者・独立研究者。複合的多層的虐待（CMA / Complex Multilayered Abuse）フレームワークの提唱者。",
-      "description": "日本の独立研究者・当事者研究者。Complex Multilayered Abuse（CMA / 複合的多層的虐待）の概念フレームワークを提唱・研究している。当事者経験を出発点としつつ、主観的体験と客観的理論構造を区別（Experience ≠ Theory）した構造分析を行う。",
+      "description": "複合的多層的虐待（Complex Multilayered Abuse: CMA）の構造分析・当事者研究を手がける独立研究者（元介護職員）。当事者経験を出発点としつつ、主観的体験と客観的理論構造を区別（Experience ≠ Theory）した構造分析を行う。",
       "nationality": {
         "@type": "Country",
         "name": "Japan"
@@ -130,6 +131,9 @@
           "@id": "https://tatsuki-nakamura.com/#section14",
           "name": "14 ご支援について（Support）",
           "url": "https://tatsuki-nakamura.com/#section14"
+        },
+        {
+          "@id": "https://tatsuki-nakamura.com/#profile"
         }
       ],
       "about": [
@@ -339,6 +343,20 @@
         "身体化"
       ],
       "description": "A non-diagnostic structural observation framing distress-linked solitary sexual discharge as an affect regulation mechanism anchored to CMA Layer 5 (Somatization/Memory Fragmentation) and Layer 3 (Normalization), preventing pathologizing labels from reproducing Layer 1 isolation."
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://tatsuki-nakamura.com/#profile",
+      "url": "https://tatsuki-nakamura.com/#section08",
+      "name": "中村 達希 (Tatsuki Nakamura) 公式プロフィール",
+      "description": "当事者研究者・独立研究者である中村達希の公式プロフィールおよび活動拠点一覧。",
+      "inLanguage": "ja",
+      "mainEntity": {
+        "@id": "https://tatsuki-nakamura.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://tatsuki-nakamura.com/#website"
+      }
     }
   ]
 }
@@ -623,114 +641,240 @@ noteで記事を読む ↗
 </section>
 </div>
 <div id="section08">
+<style>
+#cma08-content.cma08-wrap {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 16px 80px;
+  color: var(--cma-text);
+  font-family: "Noto Sans JP", system-ui, sans-serif;
+  text-align: left;
+  scroll-margin-top: 80px;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+}
+#cma08-content, #cma08-content * { box-sizing: border-box; }
+#cma08-content a:focus-visible { outline: 3px solid var(--cma-gold); outline-offset: 4px; border-radius: 4px; }
+#cma08-content .cma08-card {
+  background: var(--cma-surface);
+  border: 1px solid var(--cma-border);
+  border-radius: 24px;
+  padding: clamp(28px, 5vw, 56px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+}
+#cma08-content .cma08-header {
+  border-bottom: 1px solid var(--cma-border);
+  padding-bottom: 24px;
+  margin-bottom: 28px;
+}
+#cma08-content .cma08-badge {
+  display: inline-block;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cma-gold);
+  background: var(--cma-gold-soft);
+  border: 1px solid var(--cma-gold-faint);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+#cma08-content .cma08-name {
+  font-family: Georgia, "Noto Serif JP", serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--cma-text);
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+#cma08-content .cma08-en-name {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  color: var(--cma-secondary);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+#cma08-content .cma08-role {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cma-gold);
+}
+#cma08-content .cma08-bio {
+  color: var(--cma-secondary);
+  line-height: 1.85;
+  font-size: 0.98rem;
+  margin-bottom: 32px;
+}
+#cma08-content .cma08-links-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--cma-text);
+  margin-bottom: 16px;
+  padding-left: 12px;
+  border-left: 4px solid var(--cma-gold);
+}
+#cma08-content .cma08-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 36px;
+}
+#cma08-content .cma08-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--cma-card-bg);
+  border: 1px solid var(--cma-border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--cma-text);
+  transition: all 0.2s ease;
+}
+#cma08-content .cma08-link-card:hover {
+  background: #F8F5EE;
+  border-color: var(--cma-gold);
+  transform: translateY(-2px);
+}
+#cma08-content .cma08-link-info strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--cma-text);
+}
+#cma08-content .cma08-link-info span {
+  font-size: 0.78rem;
+  color: var(--cma-muted);
+}
+#cma08-content .cma08-link-arrow {
+  color: var(--cma-gold);
+  font-weight: 700;
+}
+#cma08-content .cma08-nav-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 48px;
+}
+#cma08-content .cma08-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 20px;
+  background: var(--cma-surface);
+  border: 1px solid var(--cma-border);
+  border-radius: 12px;
+  color: var(--cma-text) !important;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+#cma08-content .cma08-nav-btn:hover {
+  background: var(--cma-gold-soft);
+  border-color: var(--cma-gold);
+  color: var(--cma-gold) !important;
+  transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+  #cma08-content.cma08-wrap { padding: 24px 12px 60px; }
+  #cma08-content .cma08-card { padding: 24px 16px; border-radius: 18px; }
+  #cma08-content .cma08-nav-area { flex-direction: column; }
+  #cma08-content .cma08-nav-btn { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #cma08-content .cma08-link-card,
+  #cma08-content .cma08-nav-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+</style>
 <section id="cma08-content" class="cma08-wrap" aria-labelledby="s08-title" lang="ja">
-<div class="cma08-card">
-<h2 id="s08-title" class="cma08-title">08 Developer Profile &amp; FAQ</h2>
-
-<div class="cma08-profile-layout">
-<!-- メイン：ストーリーと背景 -->
-<div class="cma08-profile-main">
-<div class="cma08-profile-header">
-<div class="cma08-profile-name">
-<h3>中村 達希</h3>
-<span lang="en">Tatsuki Nakamura</span>
-</div>
-</div>
-
-<div class="cma08-story-text">
-<p>
-日本の独立研究者・当事者研究者。
-</p>
-<p>
-支援を求めても届かない、あるいは届いているように見えても不利益が固定化されてしまう。そうした「見えにくく、言葉にならない苦しみ」が、個人の心の問題や単発の出来事として片付けられてしまうことへの強い危機感が、本研究の原点です。
-</p>
-<p>
-私自身の実存的経験（N=1）を問いの出発点としながらも、個人の人生史と理論モデルを厳密に分離（Experience ≠ Theory）し、関係性や制度の相互作用によって虐待環境が維持される「自己強化構造」を可視化するための枠組みとして、CMA（複合的多層的虐待）を提唱・研究しています。
-</p>
-<div class="muted-note">
-※脳性麻痺・視野障害等の身体特性を有しますが、CMA理論は特定の障害や病理に依存しない構造分析モデルです。
-</div>
-</div>
-</div>
-
-<!-- サイドバー：公式IDと窓口 -->
-<div class="cma08-profile-sidebar">
-<div class="cma08-box">
-<h4>Researcher ID</h4>
-<a
-id="cy-effective-orcid-url"
-class="orcid-link"
-href="https://orcid.org/0009-0004-9696-7896"
-target="orcid.widget"
-rel="me noopener noreferrer"
->
-<img
-src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
-style="width: 1.1em; height: 1.1em;"
-alt="ORCID iD icon"
-/>
-0009-0004-9696-7896 ↗
-</a>
-</div>
-
-<!-- 公式リンク＆プロフィール -->
-<div class="cma08-box">
-<h4>Official Links &amp; Profiles</h4>
-<p style="font-size: 0.85rem; color: var(--cma08-secondary); margin-bottom: 12px; line-height: 1.6;">
-論文・活動情報や各SNSは、以下のプラットフォームよりご覧いただけます。
-</p>
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<a href="https://profile.tatsuki-nakamura.com/" class="profile-site-link" target="_blank" rel="noopener noreferrer">
-プロフィール総合窓口 ↗
-</a>
-<a href="https://github.com/tatsukin910-beep/cma-theory-core" class="profile-site-link" target="_blank" rel="noopener noreferrer">
-GitHub (cma-theory-core) ↗
-</a>
-<a href="https://tayo.jp/users/01KSZKVJV1J84SDB73DHN6CAX0" class="profile-site-link" target="_blank" rel="noopener noreferrer">
-tayo.jp (研究者プロフィール) ↗
-</a>
-<a href="https://tatsu97910.academia.edu/" class="profile-site-link" target="_blank" rel="noopener noreferrer">
-Academia.edu ↗
-</a>
-<a href="https://paperlens.science/app/profile/tatsu97910" class="profile-site-link" target="_blank" rel="noopener noreferrer">
-PaperLens ↗
-</a>
-</div>
-</div>
-</div>
-</div>
-
-<!-- FAQ -->
-<div class="cma08-faq-sec">
-<h3 style="font-family:Georgia, serif; font-size:1.2rem; margin-bottom:20px; color:var(--cma08-text);">
-よくある質問（FAQ）と境界線
-</h3>
-
-<div class="cma08-faq-item">
-<div class="cma08-faq-q"><span>Q.</span><span>CMAは著者の個人的な人生史や体験談そのものですか？</span></div>
-<div class="cma08-faq-a">
-いいえ。当事者経験（N=1）は問いの出発点ですが、CMAモデルは抽象化・客観化された構造メカニズムです。個人の手記（Zenodo収録作品等）とは方法論的に明確に分離されています。
-</div>
-</div>
-
-<div class="cma08-faq-item">
-<div class="cma08-faq-q"><span>Q.</span><span>CMAは特定の病気や精神疾患の新しい診断名ですか？</span></div>
-<div class="cma08-faq-a">
-いいえ。CMAは非診断的な概念フレームワークであり、個人の心を病理化・判定する医療的診断基準ではありません。不利益が維持される環境や制度の構造を可視化するための整理ツールです。
-</div>
-</div>
-</div>
-
-</div>
-
-<!-- 3方向ナビゲーション -->
-<nav class="cma08-nav-area" aria-label="ページ内ナビゲーション">
-<a href="#section06" class="cma08-nav-btn">← 06 論文・一次資料へ</a>
-<a href="#home" class="cma08-nav-btn">↑ 地図へ（HOME）</a>
-<a href="#section09" class="cma08-nav-btn">09 お問い合わせへ →</a>
-</nav>
+  <div class="cma08-card">
+    <header class="cma08-header">
+      <span class="cma08-badge">08 About Researcher</span>
+      <h2 id="s08-title" class="cma08-name">中村 達希</h2>
+      <div class="cma08-en-name">Tatsuki Nakamura</div>
+      <div class="cma08-role">当事者研究者・独立研究者（元介護職員）</div>
+    </header>
+    <div class="cma08-bio">
+      <p>
+        複合的多層的虐待（Complex Multilayered Abuse: CMA）の構造分析・当事者研究に従事。閉鎖環境において虐待構造が自己補強的に維持される過程と、その持続的影響を非診断的な視座から客観的に解明する枠組みの構築を行っています。
+      </p>
+    </div>
+    <h3 class="cma08-links-title">公式リンク・学術ID・発信一覧</h3>
+    <div class="cma08-links-grid">
+      <a href="https://note.com/tatsu97910" class="cma08-link-card" target="_blank" rel="noopener noreferrer">
+        <div class="cma08-link-info">
+          <strong>note</strong>
+          <span>日々の思考・エッセイ・手記</span>
+        </div>
+        <span class="cma08-link-arrow">↗</span>
+      </a>
+      <a href="https://orcid.org/0009-0004-9696-7896" class="cma08-link-card" target="_blank" rel="noopener noreferrer">
+        <div class="cma08-link-info">
+          <strong>ORCID</strong>
+          <span>0009-0004-9696-7896</span>
+        </div>
+        <span class="cma08-link-arrow">↗</span>
+      </a>
+      <a href="https://x.com/tatsu97910" class="cma08-link-card" target="_blank" rel="noopener noreferrer">
+        <div class="cma08-link-info">
+          <strong>X (@tatsu97910)</strong>
+          <span>最新の活動・研究ポスト</span>
+        </div>
+        <span class="cma08-link-arrow">↗</span>
+      </a>
+      <a href="https://github.com/tatsukin910-beep/cma-theory-core" class="cma08-link-card" target="_blank" rel="noopener noreferrer">
+        <div class="cma08-link-info">
+          <strong>GitHub</strong>
+          <span>cma-theory-core リポジトリ</span>
+        </div>
+        <span class="cma08-link-arrow">↗</span>
+      </a>
+      <a href="https://scholar.google.com/citations?user=NcwwIIwAAAAJ&hl=ja" class="cma08-link-card" target="_blank" rel="noopener noreferrer">
+        <div class="cma08-link-info">
+          <strong>Google Scholar</strong>
+          <span>研究者プロファイル</span>
+        </div>
+        <span class="cma08-link-arrow">↗</span>
+      </a>
+      <a href="https://tayo.jp/users/01KSZKVJV1J84SDB73DHN6CAX0" class="cma08-link-card" target="_blank" rel="noopener noreferrer">
+        <div class="cma08-link-info">
+          <strong>tayo.jp</strong>
+          <span>研究者プラットフォーム</span>
+        </div>
+        <span class="cma08-link-arrow">↗</span>
+      </a>
+      <a href="https://paperlens.science/app/profile/tatsu97910" class="cma08-link-card" target="_blank" rel="noopener noreferrer">
+        <div class="cma08-link-info">
+          <strong>PaperLens</strong>
+          <span>論文分析プロファイル</span>
+        </div>
+        <span class="cma08-link-arrow">↗</span>
+      </a>
+      <a href="https://www.youtube.com/@tatsuki-nakamura" class="cma08-link-card" target="_blank" rel="noopener noreferrer">
+        <div class="cma08-link-info">
+          <strong>YouTube</strong>
+          <span>@tatsuki-nakamura</span>
+        </div>
+        <span class="cma08-link-arrow">↗</span>
+      </a>
+    </div>
+    <nav class="cma08-nav-area" aria-label="セクション間ナビゲーション">
+      <a href="#section06" class="cma08-nav-btn">← 06 論文・資料へ</a>
+      <a href="#home" class="cma08-nav-btn">↑ 地図へ（HOME）</a>
+      <a href="#section09" class="cma08-nav-btn">09 お問い合わせへ →</a>
+    </nav>
+  </div>
 </section>
 </div>
+
 <div id="section09">
 <section id="cma09-content" class="cma09-wrap" aria-labelledby="s09-title" lang="ja"><div class="cma09-card"><h2 id="s09-title" class="cma09-title">09 Contact &amp; Guidelines</h2><p class="cma09-lead">CMA（複合的多層的虐待）の研究に関心をお寄せいただき、ありがとうございます。<br>取材や執筆のご相談、理論に関するお問い合わせは、以下の公式窓口よりお気軽にご連絡ください。</p><div class="cma09-intent-grid"><div class="cma09-intent-card"><h3>メディア取材・執筆・登壇のご相談</h3><p>当事者研究の歩みや、CMAフレームワークに関する取材・寄稿を歓迎しております。媒体の形式（Web、雑誌、学術誌など）は問いません。企画がまだ固まっていない段階でも、一緒に考えながら進めていくことが可能ですので、まずはお気軽にお声がけください。</p></div><div class="cma09-intent-card"><h3>理論・学術に関するお問い合わせ</h3><p>CMAの理論定義（v2.0）に関する学術的なご質問や、他分野（福祉・心理・社会学など）からの知見の共有など、モデルを深めるためのオープンな対話を大切にしています。</p></div></div><div class="cma09-action-box"><h3 class="cma09-action-title">公式お問い合わせフォーム</h3><p class="cma09-action-desc">以下のフォームよりメッセージをお送りください。<br>確認次第、ご入力いただいたメールアドレス宛に返信いたします。</p>
 
