@@ -3,43 +3,115 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>中村達希</title>
+  <title>中村達希 | Tatsuki Nakamura</title>
   <meta name="robots" content="noindex">
   <meta name="description" content="リンクを踏んで、ここに来てくださったこと。それが、何より大切です。">
   <style>
-    :root { color-scheme: light; --paper: #F7F3EC; --ink: #1C1915; --quiet: #6B5E4E; --rule: #E3DCD0; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--paper); color: var(--ink); font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif; line-height: 1.9; }
-    .skip { position: absolute; left: 1rem; top: 0; transform: translateY(-120%); background: var(--ink); color: var(--paper); font-family: system-ui, sans-serif; text-decoration: none; padding: 0.4rem 0.7rem; }
-    .skip:focus { transform: none; }
-    main { max-width: 36rem; margin: 0 auto; padding: 4.5rem 1.5rem 5rem; }
-    .name { font-family: system-ui, sans-serif; font-size: 0.85rem; color: var(--quiet); letter-spacing: 0.06em; margin-bottom: 2rem; }
-    h1 { font-size: 1.35rem; font-weight: 500; line-height: 1.8; margin-bottom: 3.5rem; }
-    nav { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
-    nav a { display: flex; flex-direction: column; gap: 0.15rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; min-height: 44px; }
-    nav a:hover strong { text-decoration: underline; text-underline-offset: 0.25em; }
-    nav a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
-    nav strong { font-family: system-ui, sans-serif; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.06em; }
-    nav span { color: var(--quiet); font-size: 0.98rem; }
-    .draft { margin-top: 3rem; color: var(--quiet); font-family: system-ui, sans-serif; font-size: 0.85rem; }
+    :root {
+      --bg-research: #FFFFFF;
+      --bg-daily: #F7F3EC;
+      --ink-main: #1C1915;
+      --ink-sub: #556270;
+      --boundary: #E3DCD0;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", sans-serif;
+      color: var(--ink-main);
+      background-color: var(--bg-research);
+      letter-spacing: 0.04em;
+    }
+    .thanks {
+      margin: 0;
+      padding: 1.25rem 8% 0;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 5.5rem);
+    }
+    .split-pane {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 12%;
+      text-decoration: none;
+      color: inherit;
+    }
+    .split-pane:focus-visible {
+      outline: 3px solid var(--ink-main);
+      outline-offset: -3px;
+    }
+    .pane-research { background-color: var(--bg-research); }
+    .pane-research:hover { background-color: #FAFAFA; }
+    .pane-daily {
+      background-color: var(--bg-daily);
+      border-left: 1px solid var(--boundary);
+    }
+    .pane-daily:hover { background-color: #F0EAE0; }
+    .scent-label {
+      margin: 0 0 0.8rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: var(--ink-sub);
+    }
+    .scent-title {
+      font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+      font-weight: 500;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      margin: 0;
+      line-height: 1.7;
+    }
+    .arrow-icon {
+      width: 28px;
+      height: 28px;
+      margin-top: 2.5rem;
+      fill: none;
+      stroke: var(--ink-main);
+      stroke-width: 1.5;
+    }
+    .split-pane:hover .arrow-icon { transform: translateX(12px); }
+    .arrow-icon { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    @media (max-width: 768px) {
+      .split-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+      }
+      .pane-daily {
+        border-left: none;
+        border-top: 1px solid var(--boundary);
+      }
+      .split-pane { padding: 3rem 2rem; }
+      .thanks { padding: 1.5rem 2rem 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .arrow-icon { transition: none; }
+      .split-pane:hover .arrow-icon { transform: none; }
+    }
   </style>
 </head>
 <body>
-  <a class="skip" href="#content">本文へ進む</a>
-  <main id="content">
-    <p class="name">中村達希</p>
-    <h1>リンクを踏んで、ここに来てくださったこと。<br>それが、何より大切です。</h1>
-    <nav aria-label="二つの入口">
-      <a href="portal/">
-        <strong>研究サイト</strong>
-        <span>なぜ助けを求められなかったのか。<br>その理由を、人の心に戻さず、仕組みから考える。</span>
-      </a>
-      <a href="life/">
-        <strong>日常</strong>
-        <span>なにげない一日を、ここに置く。<br>研究のモデルには、しない。</span>
-      </a>
-    </nav>
-    <p class="draft">確認用です。本番のドメインは変えていません。</p>
+  <p class="thanks">リンクを踏んで、ここに来てくださったこと。<br>それが、何より大切です。</p>
+  <main class="split-layout" aria-label="二つの入口">
+    <a href="portal/" class="split-pane pane-research">
+      <p class="scent-label">研究サイト</p>
+      <h2 class="scent-title">なぜ助けを求められなかったのか。<br>その理由を、人の心に戻さず、仕組みから考える。</h2>
+      <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+    </a>
+    <a href="life/" class="split-pane pane-daily">
+      <p class="scent-label">日常</p>
+      <h2 class="scent-title">なにげない一日を、ここに置く。<br>研究のモデルには、しない。</h2>
+      <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+    </a>
   </main>
 </body>
 </html>
