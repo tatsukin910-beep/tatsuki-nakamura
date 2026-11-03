@@ -5,26 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>中村達希の記録</title>
   <meta name="robots" content="noindex">
-  <meta name="description" content="中村達希の日常を置く場所です。研究のモデルではありません。">
+  <meta name="description" content="日常を置く場所です。研究のモデルではありません。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
       --paper: #F7F3EC;
       --ink: #1C1915;
       --date: #6B5E4E;
+      --rule: #E3DCD0;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      background: var(--paper);
+      background-color: var(--paper);
       color: var(--ink);
-      font-family: "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
-      font-size: 1.125rem;
+      font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
       line-height: 1.9;
+      letter-spacing: 0.03em;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--ink); text-underline-offset: 0.25em; }
-    a:hover { color: var(--date); }
-    a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
     .skip {
       position: absolute;
       left: 1rem;
@@ -32,100 +33,133 @@
       transform: translateY(-120%);
       background: var(--ink);
       color: var(--paper);
-      padding: 0.5rem 0.8rem;
+      font-family: system-ui, sans-serif;
       text-decoration: none;
+      padding: 0.4rem 0.7rem;
     }
-    .skip:focus { transform: none; }
-    main {
-      max-width: 36em;
+    .skip:focus { transform: none; outline: 2px solid var(--paper); outline-offset: 2px; }
+    .notebook {
+      max-width: 36rem;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem 4rem;
+      padding: 3rem 1.5rem 5rem;
     }
-    .running {
+    .margin-header {
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
-      margin: 0 0 2.5rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-    }
-    .running p { margin: 0; }
-    h1 {
-      margin: 0 0 2.75rem;
-      font-family: Georgia, "Noto Serif JP", serif;
-      font-size: 1.35rem;
-      font-weight: 500;
-      line-height: 1.7;
-    }
-    h2 {
-      margin: 0;
-      padding: 0.85rem 0;
-      border-top: 1px solid var(--date);
-      font-size: 1.05rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-    }
-    .chapters { margin: 0 0 3rem; }
-    .chapters h2:last-child { border-bottom: 1px solid var(--date); }
-    .entry {
-      display: grid;
-      grid-template-columns: 7rem 1fr;
-      gap: 0.75rem 1rem;
-      padding: 1rem 0;
-      border-top: 1px solid rgba(107, 94, 78, 0.35);
-    }
-    .entry time {
+      align-items: baseline;
+      font-size: 0.85rem;
       color: var(--date);
-      font-variant-numeric: tabular-nums;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.6rem;
+      margin-bottom: 3rem;
+      font-family: system-ui, sans-serif;
     }
-    .entry p { margin: 0; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--date);
-      font-size: 1rem;
+    .margin-header h1 {
+      font-size: inherit;
+      font-weight: inherit;
+      font-family: inherit;
+      letter-spacing: inherit;
+      line-height: inherit;
+      color: inherit;
     }
-    footer p { margin: 0 0 0.8rem; }
-    footer ul {
-      margin: 0;
-      padding: 0;
+    .lead { font-size: 1.05rem; margin-bottom: 3.5rem; }
+    .sections-index {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.75rem;
+      margin-bottom: 3.5rem;
+      font-size: 0.95rem;
+      color: var(--date);
+      font-family: system-ui, sans-serif;
+    }
+    .sections-index li + li::before {
+      content: "/";
+      margin-right: 1.5rem;
+      color: var(--rule);
+    }
+    .records-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      margin-bottom: 5rem;
+    }
+    .record-entry {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      column-gap: 1.5rem;
+      align-items: baseline;
+    }
+    .record-date {
+      color: var(--date);
+      font-size: 0.88rem;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      white-space: nowrap;
+    }
+    .record-body { font-size: 0.98rem; }
+    .record-body p + p { margin-top: 0.8rem; }
+    .footer-boundary {
+      border-top: 1px solid var(--rule);
+      padding-top: 2rem;
+      font-size: 0.88rem;
+    }
+    .footer-lead { color: var(--date); margin-bottom: 1rem; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
       list-style: none;
     }
-    footer li { margin: 0.15rem 0; }
-    .draft {
-      margin-top: 2rem;
-      color: var(--date);
-      font-size: 0.9rem;
+    .footer-links a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--rule);
     }
-    @media (max-width: 640px) {
-      .entry { grid-template-columns: 1fr; gap: 0; }
+    .footer-links a:hover { text-decoration-color: var(--ink); }
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+    @media (max-width: 480px) {
+      .record-entry { grid-template-columns: 1fr; row-gap: 0.3rem; }
     }
     @media (prefers-reduced-motion: reduce) {
-      * { scroll-behavior: auto; }
+      * { transition: none !important; }
     }
   </style>
 </head>
 <body>
   <a class="skip" href="#content">本文へ進む</a>
-  <main id="content">
-    <header class="running">
-      <p>中村達希の記録</p>
+  <main class="notebook" id="content">
+    <header class="margin-header">
+      <h1>中村達希の記録</h1>
       <p>研究とは別</p>
     </header>
-    <h1>日常を置く場所です。研究のモデルではありません。</h1>
-    <div class="chapters" aria-label="これからの見出し">
-      <h2>いま</h2>
-      <h2>これまで</h2>
-      <h2>書いておきたいこと</h2>
+    <p class="lead">日常を置く場所です。研究のモデルではありません。</p>
+    <ul class="sections-index" aria-label="これからの見出し">
+      <li>いま</li>
+      <li>これまで</li>
+      <li>書いておきたいこと</li>
+    </ul>
+    <div class="records-list">
+      <!--
+        文章を足すときは、この1段を増やします。
+        <article class="record-entry">
+          <time class="record-date" datetime="2026-11-04">2026-11-04</time>
+          <div class="record-body"><p>ここに文章が入ります。</p></div>
+        </article>
+      -->
     </div>
-    <footer>
-      <p><a href="https://tatsuki-nakamura.com/">構造の話は、研究サイトにあります。</a></p>
-      <ul>
+    <footer class="footer-boundary">
+      <p class="footer-lead">構造の話は、研究サイトにあります。</p>
+      <ul class="footer-links">
+        <li><a href="https://tatsuki-nakamura.com/">研究サイト</a></li>
         <li><a href="https://note.com/tatsu97910">note</a></li>
         <li><a href="https://x.com/tatsu97910">X</a></li>
         <li><a href="https://orcid.org/0009-0004-9696-7896">ORCID</a></li>
       </ul>
-      <p class="draft">確認用のページです。中身は、これから置きます。</p>
     </footer>
   </main>
 </body>
