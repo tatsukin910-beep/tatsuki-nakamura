@@ -332,6 +332,7 @@
 </script>
 </head>
 <body>
+  <a class="skip-link" href="#content">本文へ進む</a>
   <p class="draft-bar">確認用の下書きです。本番の <a href="https://tatsuki-nakamura.com">tatsuki-nakamura.com</a> は切り替えていません。</p>
   <div id="home" class="cma-home-root">
 <!-- ヘッダー -->
@@ -339,9 +340,9 @@
 <div class="inner">
 <a href="#home" class="brand-group" aria-label="CMA ホームへ">
 <svg class="brand-logo-svg" viewBox="0 0 80 80" fill="none" aria-hidden="true" focusable="false">
-<circle cx="40" cy="40" r="16" stroke="#A87B1D" stroke-width="2" />
-<circle cx="40" cy="40" r="4.5" fill="#A87B1D" />
-<g fill="#C49C2C">
+<circle cx="40" cy="40" r="16" stroke="currentColor" stroke-width="2" />
+<circle cx="40" cy="40" r="4.5" fill="currentColor" />
+<g class="cma-orbit" fill="currentColor">
 <circle cx="40" cy="12" r="2.4" />
 <circle cx="66.6" cy="31.3" r="2.4" />
 <circle cx="56.5" cy="62.7" r="2.4" />
@@ -354,10 +355,14 @@
 <div class="cma-sub">中村達希</div>
 </div>
 </a>
+<div class="header-tools">
+<button type="button" id="contrast-toggle" class="contrast-toggle" aria-pressed="false">白黒反転</button>
+<p id="theme-status" class="visually-hidden" aria-live="polite"></p>
 <div class="ver-badge">参照定義：v2.0</div>
 </div>
+</div>
 </header>
-
+<main id="content">
 <!-- 本文コンテナ -->
 <div class="cma-home-body" lang="ja">
 <div class="cma-wrap">
@@ -392,7 +397,6 @@
 </ul>
 </nav>
 
-</div>
 </div>
 </div>
 <section id="section02" class="cma02-section" lang="ja" aria-labelledby="cma02-title">
@@ -883,5 +887,30 @@ hostedButtonId: "AQSBMHKVYJ3LC",
 </script>
 </div>
 </article><article class="cma09-channel contact"><h4>✉ お問い合わせ</h4><p>CMAに関するご質問、取材のお申し込み、学術的な対話などのご連絡はこちらの窓口からお願いいたします。</p><a href="#section09" class="cma-btn cma-btn-contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg><span>✉ お問い合わせ窓口へ</span></a></article></div><div class="cma14-disclaimer"><p>※応援の有無によって、CMAの内容・結論・公開範囲が変わることはありません。</p></div><div class="cma14-nav-container"><nav class="cma14-next" aria-label="前後の章"><a href="#section08">← 08 About</a><a href="#section09">09 Contact お問い合わせ →</a></nav><nav class="cma14-nav-back" aria-label="ページ内ナビゲーション"><a href="#home" class="cma14-btn-home-back"><span class="nav-arrow" aria-hidden="true">↑</span><span>HOMEへ戻る</span><span class="nav-sub" lang="en">Complex Multilayered Abuse (CMA)</span></a></nav></div><footer class="cma14-colophon" role="contentinfo"><p><strong>License:</strong> Unless otherwise noted, official CMA theoretical texts and specifications are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p><p><strong>Scope Note:</strong> CMA is a non-diagnostic structural analysis framework. Lived experience serves as the empirical starting point, not the model itself.</p><p class="cma14-colophon-meta">ORCID: <a href="https://orcid.org/0009-0004-9696-7896" target="_blank" rel="noopener noreferrer">0009-0004-9696-7896</a> | 文化庁登録 第41365号の1<br>Site Founded: 2026-06-12 | Last Revised: 2026-10-25</p></footer></div></section>
+<script>
+(function () {
+  var key = "cma-theme";
+  var root = document.documentElement;
+  var btn = document.getElementById("contrast-toggle");
+  var live = document.getElementById("theme-status");
+  function apply(on, announce) {
+    root.setAttribute("data-theme", on ? "invert" : "standard");
+    if (btn) btn.setAttribute("aria-pressed", on ? "true" : "false");
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", on ? "#111111" : "#FAF8F5");
+    try { localStorage.setItem(key, on ? "invert" : "standard"); } catch (e) {}
+    if (announce && live) live.textContent = on ? "白黒反転にしました" : "標準の色に戻しました";
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(key); } catch (e) {}
+  var prefer = window.matchMedia("(prefers-contrast: more)").matches;
+  apply(saved ? saved === "invert" : prefer, false);
+  if (btn) btn.addEventListener("click", function () {
+    apply(root.getAttribute("data-theme") !== "invert", true);
+  });
+})();
+</script>
+</main>
+</div>
 </body>
 </html>
