@@ -1,0 +1,368 @@
+---
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  pageTitle?: string;
+  pageDescription?: string;
+  pageUrl?: string;
+  dateModified?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  includeFaq?: boolean;
+}
+
+const {
+  pageTitle = "中村達希 公式研究サイト｜Complex Multilayered Abuse (CMA)",
+  pageDescription = "当事者研究者・独立研究者 中村達希の公式研究サイト。人が支援に繋がれず抜け出せなくなる閉鎖環境の維持構造を分析する非診断的な概念フレームワーク「複合的多層的虐待（CMA）」の理論定義、5層モデル、学術アーカイブを公開しています。",
+  pageUrl = "https://tatsuki-nakamura.com/portal/",
+  dateModified = "2026-11-17",
+  breadcrumbs = [
+    { name: "HOME", url: "https://tatsuki-nakamura.com/portal/" }
+  ],
+  includeFaq = true
+} = Astro.props;
+
+const graph: Record<string, any>[] = [
+  // 1. 研究者エンティティ（Person）
+  {
+    "@type": "Person",
+    "@id": "https://tatsuki-nakamura.com/#person",
+    "name": "中村達希",
+    "alternateName": ["Tatsuki Nakamura", "Nakamura Tatsuki"],
+    "url": "https://tatsuki-nakamura.com/",
+    "email": "mailto:contact@tatsuki-nakamura.com",
+    "jobTitle": "Independent Researcher / Lived Experience Researcher",
+    "disambiguatingDescription": "当事者研究者・独立研究者（元介護職員）。複合的多層的虐待（CMA / Complex Multilayered Abuse）フレームワークの提唱者。",
+    "description": "日本の独立研究者・当事者研究者。Complex Multilayered Abuse（CMA / 複合的多層的虐待）の概念フレームワークを提唱・研究している。当事者経験を出発点としつつ、主観的体験と客観的理論構造を区別（Experience ≠ Theory）した構造分析を行う。IFRC Limitless 2026 Phase 2 Cohort（日本赤十字社支援）。",
+    "award": "IFRC Limitless 2026 Youth Innovation Academy (Phase 2 Cohort)",
+    "nationality": {
+      "@type": "Country",
+      "name": "Japan"
+    },
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "ORCID",
+      "value": "0009-0004-9696-7896",
+      "url": "https://orcid.org/0009-0004-9696-7896"
+    },
+    "sameAs": [
+      "https://scholar.google.com/citations?user=NcwwIIwAAAAJ",
+      "https://orcid.org/0009-0004-9696-7896",
+      "https://tayo.jp/users/01KSZKVJV1J84SDB73DHN6CAX0",
+      "https://tatsu97910.academia.edu/",
+      "https://paperlens.science/app/profile/tatsu97910",
+      "https://x.com/tatsu97910",
+      "https://note.com/tatsu97910",
+      "https://www.youtube.com/@tatsuki-nakamura",
+      "https://github.com/tatsukin910-beep",
+      "https://github.com/tatsukin910-beep/cma-theory-core"
+    ],
+    "knowsAbout": [
+      { "@id": "https://tatsuki-nakamura.com/#cma" },
+      "Lived Experience Research",
+      "Institutional Non-Responsiveness",
+      "Structural Analysis of Abuse",
+      "Disability Studies",
+      "Affect Regulation",
+      "当事者研究",
+      "支援困難事例",
+      "ガスライティング",
+      "閉鎖環境における支配構造",
+      "制度的無応答"
+    ]
+  },
+
+  // 2. サイト全体（WebSite）
+  {
+    "@type": "WebSite",
+    "@id": "https://tatsuki-nakamura.com/#website",
+    "url": "https://tatsuki-nakamura.com/",
+    "name": "中村達希 公式研究サイト｜Complex Multilayered Abuse (CMA)",
+    "headline": "中村達希 公式研究サイト｜複合的多層的虐待（CMA）構造分析フレームワーク",
+    "description": "当事者研究者・独立研究者 中村達希の公式研究サイト。閉鎖環境の維持構造を分析する非診断的な概念フレームワーク「複合的多層的虐待（CMA）」の理論定義、5層モデル、学術アーカイブおよび活動拠点を公開しています。",
+    "inLanguage": "ja",
+    "publisher": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "copyrightHolder": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+
+  // 3. 現在のページ（WebPage）
+  {
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    "url": pageUrl,
+    "name": pageTitle,
+    "description": pageDescription,
+    "inLanguage": "ja",
+    "datePublished": "2026-06-12",
+    "dateModified": dateModified,
+    "isPartOf": { "@id": "https://tatsuki-nakamura.com/#website" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "breadcrumb": { "@id": `${pageUrl}#breadcrumb` }
+  },
+
+  // 4. パンくずリスト（BreadcrumbList）
+  {
+    "@type": "BreadcrumbList",
+    "@id": `${pageUrl}#breadcrumb`,
+    "itemListElement": breadcrumbs.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url
+    }))
+  },
+
+  // 5. 中核概念定義（DefinedTerm）
+  {
+    "@type": "DefinedTerm",
+    "@id": "https://tatsuki-nakamura.com/#cma",
+    "name": "Complex Multilayered Abuse",
+    "alternateName": ["CMA", "複合的多層的虐待", "CMA Framework", "CMA 5層構造モデル"],
+    "termCode": "CMA-v2.1",
+    "inDefinedTermSet": "https://doi.org/10.5281/zenodo.24218373",
+    "description": "Complex Multilayered Abuse（CMA / 複合的多層的虐待）は、複数の虐待・排除と機能的な構造層（第1層：孤立・情報遮断、第2層：依存固定、第3層：正常化・ガスライティング、第4層：制度的無応答）との相互作用によって、当事者が支援に繋がれず抜け出せなくなる閉鎖的かつ自己強化的な環境が維持される仕組みを分析する非診断的な概念フレームワークである。第5層（身体・記憶の断片化）は環境を維持する第1〜4層と同型の仕組みではなく、長期的作用に伴う帰結として位置づけられる。当事者経験は研究の出発点であり、理論モデルそのものではない（Experience ≠ Theory）。",
+    "url": "https://tatsuki-nakamura.com/portal/framework/",
+    "subjectOf": [
+      { "@id": "https://doi.org/10.5281/zenodo.24218373" },
+      { "@id": "https://doi.org/10.5281/zenodo.21876469" },
+      { "@id": "https://doi.org/10.5281/zenodo.22052937" },
+      { "@id": "https://doi.org/10.5281/zenodo.23397760" },
+      { "@id": "https://doi.org/10.5281/zenodo.22205874" },
+      { "@id": "https://doi.org/10.5281/zenodo.23976957" },
+      { "@id": "https://doi.org/10.5281/zenodo.20103896" },
+      { "@id": "https://tatsuki-nakamura.com/#manuscript-affect-regulation-2026" },
+      { "@id": "https://github.com/tatsukin910-beep/cma-theory-core" }
+    ]
+  },
+
+  // 6. 公式リポジトリ（SoftwareSourceCode）
+  {
+    "@type": "SoftwareSourceCode",
+    "@id": "https://github.com/tatsukin910-beep/cma-theory-core",
+    "name": "cma-theory-core",
+    "description": "Complex Multilayered Abuse (CMA) 公式理論定義・用語体系のバージョン管理リポジトリ（文化庁著作権登録 第41365号の1）",
+    "url": "https://github.com/tatsukin910-beep/cma-theory-core",
+    "codeRepository": "https://github.com/tatsukin910-beep/cma-theory-core",
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  },
+
+  // 7. 学術アーカイブ一覧（ScholarlyArticles）
+  {
+    "@type": "ScholarlyArticle",
+    "@id": "https://doi.org/10.5281/zenodo.24218373",
+    "headline": "Complex Multilayered Abuse (CMA) Theory Definition Version 2.1",
+    "name": "Complex Multilayered Abuse (CMA) Theory Definition Version 2.1",
+    "alternateName": ["CMA Theory Definition v2.1", "CMA 理論定義書 Version 2.1（改訂統合版）"],
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "publisher": { "@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "version": "2.1",
+    "datePublished": "2026-11-14",
+    "isBasedOn": { "@id": "https://doi.org/10.5281/zenodo.21876469" },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.24218373",
+      "url": "https://doi.org/10.5281/zenodo.24218373"
+    },
+    "url": "https://doi.org/10.5281/zenodo.24218373",
+    "inLanguage": ["ja", "en"],
+    "keywords": ["Complex Multilayered Abuse", "CMA", "Institutional Non-Responsiveness", "Lived Experience Research", "Structural Analysis of Abuse"],
+    "description": "Complex Multilayered Abuse (CMA) 理論定義書 Version 2.1（改訂統合版）。v2.0を一次基盤としつつ、Layer 01–04（環境維持層・Structuring）とLayer 05（持続的作用の帰結・Stabilization／フィードバック仮説境界）の区別、研究の三水準（Level A–C）、隣接概念との境界線、説明用図式、公式用語ロックを統合した非診断的概念フレームワーク定義書。"
+  },
+  {
+    "@type": "ScholarlyArticle",
+    "@id": "https://doi.org/10.5281/zenodo.21876469",
+    "headline": "Complex Multilayered Abuse (CMA) Theory Definition Version 2.0",
+    "name": "Complex Multilayered Abuse (CMA) Theory Definition Version 2.0",
+    "alternateName": ["CMA Theory Definition v2.0", "CMA 理論定義書 Version 2.0"],
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "publisher": { "@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "version": "2.0",
+    "datePublished": "2026-08-10",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.21876469",
+      "url": "https://doi.org/10.5281/zenodo.21876469"
+    },
+    "url": "https://doi.org/10.5281/zenodo.21876469",
+    "inLanguage": ["ja", "en"],
+    "keywords": ["Complex Multilayered Abuse", "CMA", "Institutional Non-Responsiveness", "Lived Experience Research", "Structural Analysis of Abuse"]
+  },
+  {
+    "@type": "ScholarlyArticle",
+    "@id": "https://doi.org/10.5281/zenodo.22052937",
+    "headline": "CMA Research Architecture V2.1",
+    "name": "CMA Research Architecture V2.1: Methodological Specification for N=1 Structural Lived-Experience Research",
+    "alternateName": ["CMA 研究方法論規範 V2.1", "Research Architecture V2.1"],
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "publisher": { "@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "version": "2.1",
+    "datePublished": "2026-08-22",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.22052937",
+      "url": "https://doi.org/10.5281/zenodo.22052937"
+    },
+    "url": "https://doi.org/10.5281/zenodo.22052937",
+    "inLanguage": ["ja", "en"],
+    "keywords": ["Research Architecture", "Methodology", "Lived Experience Research", "N=1", "Complex Multilayered Abuse"]
+  },
+  {
+    "@type": "ScholarlyArticle",
+    "@id": "https://doi.org/10.5281/zenodo.23397760",
+    "headline": "支援要請に対する無反応状況下における虐待体験の維持構造 (Exploratory N=1 Analysis)",
+    "name": "Maintenance Structure of Abuse Experiences under Institutional Non-Response to Support Requests: An Exploratory N=1 Analysis Integrating Lived-Experience Records and Objective Documents",
+    "alternateName": ["支援要請に対する無反応状況下における虐待体験の維持構造――当事者の体験記録と客観的資料を統合した探索的分析"],
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "publisher": { "@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "datePublished": "2026-10-15",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.23397760",
+      "url": "https://doi.org/10.5281/zenodo.23397760"
+    },
+    "url": "https://doi.org/10.5281/zenodo.23397760",
+    "inLanguage": ["ja", "en"],
+    "keywords": ["Institutional Non-Responsiveness", "Self-Reinforcing Structure", "Complex Multilayered Abuse"],
+    "description": "Exploratory N=1 analysis examining how Institutional Non-Responsiveness (Layer 04) interacts with Layers 01–03 to sustain a self-reinforcing structure. Layer 05 is treated as a consequence of sustained adaptation. Non-diagnostic and non-generalizable."
+  },
+  {
+    "@type": "ScholarlyArticle",
+    "@id": "https://doi.org/10.5281/zenodo.22205874",
+    "headline": "CMA 5 Core Layers: Official Terminology and Interpretive Notes",
+    "name": "CMA 5 Core Layers: Official Terminology and Interpretive Notes",
+    "alternateName": ["CMA 5中核層：公式用語および解釈指針", "Official Terminology v1.0.1"],
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "publisher": { "@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "version": "1.0.1",
+    "datePublished": "2026-08-31",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.22205874",
+      "url": "https://doi.org/10.5281/zenodo.22205874"
+    },
+    "url": "https://doi.org/10.5281/zenodo.22205874",
+    "inLanguage": ["ja", "en"],
+    "keywords": ["Official Terminology", "Interpretive Notes", "Five Core Layers", "Complex Multilayered Abuse"]
+  },
+  {
+    "@type": "ScholarlyArticle",
+    "@id": "https://doi.org/10.5281/zenodo.23976957",
+    "headline": "An Exploratory Study of AI-Based Recognition and Reconstruction of an Independent Researcher's Public Profile: Research Plan and Verification Criteria (v1.0)",
+    "name": "An Exploratory Study of AI-Based Recognition and Reconstruction of an Independent Researcher's Public Profile: Research Plan and Verification Criteria (v1.0)",
+    "alternateName": ["大規模言語モデルによる独立研究者の公開情報再構成に関する探索的調査計画書", "Research Plan and Verification Criteria (v1.0)"],
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "publisher": { "@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "datePublished": "2026-11-05",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.23976957",
+      "url": "https://doi.org/10.5281/zenodo.23976957"
+    },
+    "url": "https://doi.org/10.5281/zenodo.23976957",
+    "inLanguage": ["ja", "en"],
+    "keywords": ["Study Plan", "Large Language Models", "Public Information Reconstruction", "Lived Experience Research", "Complex Multilayered Abuse"],
+    "description": "公開情報だけを使って、大規模言語モデルが独立研究者の公開像をどう再構成するかを調べる前の計画書です（v1.0）。結果は報告していません。定義の正本でもありません。",
+    "version": "1.0"
+  },
+  {
+    "@type": "ScholarlyArticle",
+    "@id": "https://doi.org/10.5281/zenodo.20103896",
+    "headline": "Complex Multilayered Abuse Theory - Initial Concept Definition (v1.0)",
+    "name": "Complex Multilayered Abuse Theory - Initial Concept Definition (v1.0)",
+    "alternateName": ["CMA 最初期概念定義書（v1.0）"],
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "publisher": { "@type": "Organization", "name": "Zenodo", "url": "https://zenodo.org/" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "version": "1.0",
+    "datePublished": "2026-05-10",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "DOI",
+      "value": "10.5281/zenodo.20103896",
+      "url": "https://doi.org/10.5281/zenodo.20103896"
+    },
+    "url": "https://doi.org/10.5281/zenodo.20103896",
+    "inLanguage": ["ja", "en"]
+  },
+  {
+    "@type": "ScholarlyArticle",
+    "@id": "https://tatsuki-nakamura.com/#manuscript-affect-regulation-2026",
+    "headline": "Distress-Linked Solitary Sexual Discharge as Affect Regulation",
+    "name": "Distress-Linked Solitary Sexual Discharge as Affect Regulation: A Non-Diagnostic Structural Observation Anchored to CMA Layer 5 Status",
+    "alternateName": ["情動調整としての苦痛誘発性孤発的性的解放：CMA第5層ステータスに定位した非診断的構造観察", "CMA Working Manuscript (2026)"],
+    "author": { "@id": "https://tatsuki-nakamura.com/#person" },
+    "publisher": { "@type": "Organization", "name": "PaperLens", "url": "https://paperlens.science/" },
+    "about": { "@id": "https://tatsuki-nakamura.com/#cma" },
+    "url": "https://paperlens.science/app/profile/tatsu97910",
+    "datePublished": "2026-10-20",
+    "inLanguage": "en",
+    "description": "A non-diagnostic structural observation framing distress-linked solitary sexual discharge as an affect regulation mechanism anchored to CMA Layer 5 (Somatization/Memory Fragmentation) and Layer 3 (Normalization), preventing pathologizing labels from reproducing Layer 1 isolation."
+  }
+];
+
+// 8. FAQPage
+if (includeFaq) {
+  graph.push({
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "複合的多層的虐待（CMA: Complex Multilayered Abuse）とは何ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CMAは、閉鎖的な環境において人が支援に繋がれず抜け出せなくなる維持構造を、第1層（孤立・情報遮断）、第2層（依存固定）、第3層（正常化・ガスライティング）、第4層（制度的無応答）の相互作用と、長期的作用の帰結である第5層（身体・記憶の断片化）から分析する非診断的な概念フレームワークです。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "CMAは医学的な診断名やチェックリストですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "いいえ。CMAは個人の症状や人格を評価・診断する医学的・心理学的診断基準ではありません。当事者経験を出発点としつつ、個人の問題に還元せず、閉鎖環境と制度の力学を客観的に記述するための構造分析モデル（Experience ≠ Theory）です。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "CMAの理論定義や論文を研究・教育で引用できますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。公式理論定義書（Zenodo DOI: 10.5281/zenodo.24218373 / 10.5281/zenodo.21876469）および関連文書はクリエイティブ・コモンズ 表示 4.0 国際ライセンス（CC BY 4.0）のもと公開されており、出典とDOIを明記することで自由に引用・活用できます。"
+        }
+      }
+    ]
+  });
+}
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": graph
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />

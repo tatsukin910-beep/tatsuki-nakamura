@@ -1,6 +1,12 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import StructuredData from '../components/StructuredData.astro';
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
 
 interface Props {
   title: string;
@@ -8,7 +14,8 @@ interface Props {
   robots?: string;
   canonicalUrl?: string;
   ogType?: "website" | "article";
-  jsonLd?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  includeFaq?: boolean;
   homeHref?: string;
   gateHref?: string;
 }
@@ -19,38 +26,14 @@ const {
   robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://tatsuki-nakamura.com").toString(),
   ogType = "article",
-  jsonLd,
+  breadcrumbs = [
+    { name: "HOME", url: "https://tatsuki-nakamura.com/" },
+    { name: "研究サイト", url: "https://tatsuki-nakamura.com/portal/" }
+  ],
+  includeFaq = false,
   homeHref = "/portal/",
   gateHref = "/"
 } = Astro.props;
-
-const defaultJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "url": canonicalUrl,
-  "name": title,
-  "description": description,
-  "inLanguage": "ja",
-  "isPartOf": {
-    "@id": "https://tatsuki-nakamura.com/#website"
-  },
-  "author": {
-    "@type": "Person",
-    "@id": "https://tatsuki-nakamura.com/#person",
-    "name": "中村達希",
-    "identifier": {
-      "@type": "PropertyValue",
-      "propertyID": "ORCID",
-      "value": "0009-0004-9696-7896",
-      "url": "https://orcid.org/0009-0004-9696-7896"
-    }
-  },
-  "about": {
-    "@id": "https://doi.org/10.5281/zenodo.24218373"
-  }
-});
-
-const structuredData = jsonLd ?? defaultJsonLd;
 ---
 
 <!DOCTYPE html>
@@ -79,7 +62,13 @@ const structuredData = jsonLd ?? defaultJsonLd;
   <meta name="twitter:description" content={description}>
 
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script type="application/ld+json" set:html={structuredData} />
+  <StructuredData
+    pageTitle={title}
+    pageDescription={description}
+    pageUrl={canonicalUrl}
+    breadcrumbs={breadcrumbs}
+    includeFaq={includeFaq}
+  />
   <slot name="head" />
 </head>
 <body>
