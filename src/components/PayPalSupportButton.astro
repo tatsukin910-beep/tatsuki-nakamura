@@ -1,37 +1,11 @@
 ---
-const clientId = "BAAltfwowJYFPkWUdUnFmzDUnbnghB06EqfvG5e-aH5umDPzRpQ8HljFD7rvQZLqaEZBg4HzvtgTqf99LY";
-const hostedButtonId = "AQSBMHKVYJ3LC";
-const sdkSrc = `https://www.paypal.com/sdk/js?client-id=${clientId}&components=hosted-buttons&disable-funding=venmo&currency=JPY`;
-const fallbackHref = `https://www.paypal.com/ncp/payment/${hostedButtonId}`;
+// PayPal hosted button — Part 2 (container + render).
+// Part 1 (SDK <script>) is loaded once in <head> via support.astro.
 ---
 
-<div class="paypal-block">
-  <!-- スクリプトが読み込めない環境でも使える、通常のリンク -->
-  <a class="paypal-fallback" href={fallbackHref} target="_blank" rel="noopener noreferrer">
-    PayPalで支援する（リンク）
-  </a>
-  <div id={`paypal-container-${hostedButtonId}`}></div>
-</div>
-
-<script is:inline src={sdkSrc}></script>
-<script is:inline define:vars={{ hostedButtonId }}>
-  if (window.paypal && window.paypal.HostedButtons) {
-    window.paypal.HostedButtons({
-      hostedButtonId: hostedButtonId,
-    }).render("#paypal-container-" + hostedButtonId);
-  }
+<div id="paypal-container-AQSBMHKVYJ3LC"></div>
+<script is:inline>
+  paypal.HostedButtons({
+    hostedButtonId: "AQSBMHKVYJ3LC",
+  }).render("#paypal-container-AQSBMHKVYJ3LC");
 </script>
-
-<style>
-  .paypal-block {
-    margin-top: 12px;
-    min-height: 50px;
-  }
-  .paypal-fallback {
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--cma-gold);
-  }
-</style>

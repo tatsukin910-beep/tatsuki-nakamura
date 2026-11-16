@@ -37,6 +37,7 @@ const {
   {canonicalUrl && <link rel="canonical" href={canonicalUrl}>}
   <link rel="stylesheet" href="/assets/css/style.css">
   {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+  <slot name="head" />
 </head>
 <body>
   <a class="skip-link" href="#content">本文へ進む</a>

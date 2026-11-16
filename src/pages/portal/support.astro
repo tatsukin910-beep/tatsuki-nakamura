@@ -8,5 +8,12 @@ import SupportSection from '../../components/SupportSection.astro';
   description="複合的多層的虐待（CMA）の研究活動、サイト維持、資料確保へのご支援・応援に関する案内。"
   canonicalUrl="https://tatsuki-nakamura.com/portal/support/"
 >
+  <!-- PayPal part 1: SDK is loaded once, in <head>, on this page only -->
+  <script
+    slot="head"
+    is:inline
+    src="https://www.paypal.com/sdk/js?client-id=BAAltfwowJYFPkWUdUnFmzDUnbnghB06EqfvG5e-aH5umDPzRpQ8HljFD7rvQZLqaEZBg4HzvtgTqf99LY&components=hosted-buttons&disable-funding=venmo&currency=JPY"
+  ></script>
+
   <SupportSection />
 </PortalLayout>
