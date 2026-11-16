@@ -1,0 +1,34 @@
+---
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  prev?: NavItem;
+  homeHref?: string;
+  homeLabel?: string;
+  next?: NavItem;
+}
+
+const {
+  prev,
+  homeHref = "/portal/",
+  homeLabel = "↑ 地図へ（HOME）",
+  next
+} = Astro.props;
+---
+
+<nav class="cma-section-nav" aria-label="ページ内ナビゲーション">
+  {prev ? (
+    <a href={prev.href} class="cma-section-nav-btn">{prev.label}</a>
+  ) : (
+    <span aria-hidden="true"></span>
+  )}
+  <a href={homeHref} class="cma-section-nav-btn">{homeLabel}</a>
+  {next ? (
+    <a href={next.href} class="cma-section-nav-btn">{next.label}</a>
+  ) : (
+    <span aria-hidden="true"></span>
+  )}
+</nav>

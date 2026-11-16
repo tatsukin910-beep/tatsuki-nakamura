@@ -12,6 +12,16 @@ const {
   homeHref = "/portal/",
   gateHref = "/"
 } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const navLinks = [
+  { href: "/portal/", label: "HOME", match: (p: string) => p === "/portal" || p === "/portal/" || p === "/portal/index.html" },
+  { href: "/portal/framework/", label: "02 5層モデル", match: (p: string) => p.startsWith("/portal/framework") },
+  { href: "/portal/archive/", label: "06 資料・方法", match: (p: string) => p.startsWith("/portal/archive") },
+  { href: "/portal/about/", label: "08 プロフィール", match: (p: string) => p.startsWith("/portal/about") },
+  { href: "/portal/contact/", label: "09 お問い合わせ", match: (p: string) => p.startsWith("/portal/contact") },
+  { href: "/portal/support/", label: "14 ご支援", match: (p: string) => p.startsWith("/portal/support") },
+];
 ---
 
 <header id="cma-header">
@@ -30,4 +40,18 @@ const {
       <div class="ver-badge">{versionText}</div>
     </div>
   </div>
+  <nav class="portal-subnav" aria-label="研究ポータルナビゲーション">
+    <ul>
+      {navLinks.map((item) => {
+        const isCurrent = item.match(pathname);
+        return (
+          <li>
+            <a href={item.href} aria-current={isCurrent ? "page" : undefined}>
+              {item.label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
 </header>

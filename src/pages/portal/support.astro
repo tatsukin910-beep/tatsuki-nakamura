@@ -1,5 +1,6 @@
 ---
 import PortalLayout from '../../layouts/PortalLayout.astro';
+import SectionNav from '../../components/SectionNav.astro';
 ---
 
 <PortalLayout
@@ -72,25 +73,10 @@ import PortalLayout from '../../layouts/PortalLayout.astro';
         <p>※応援の有無によって、CMAの内容・結論・公開範囲が変わることはありません。</p>
       </div>
 
-      <div class="cma14-nav-container">
-        <nav class="cma14-next" aria-label="前後の章">
-          <a href="/portal/about/">← 08 About</a>
-          <a href="/portal/contact/">09 Contact お問い合わせ →</a>
-        </nav>
-        <nav class="cma14-nav-back" aria-label="ページ内ナビゲーション">
-          <a href="/portal/" class="cma14-btn-home-back">
-            <span class="nav-arrow" aria-hidden="true">↑</span>
-            <span>HOMEへ戻る</span>
-            <span class="nav-sub" lang="en">Complex Multilayered Abuse (CMA)</span>
-          </a>
-        </nav>
-      </div>
-
-      <footer class="cma14-colophon" role="contentinfo">
-        <p><strong>License:</strong> Unless otherwise noted, official CMA theoretical texts and specifications are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
-        <p><strong>Scope Note:</strong> CMA is a non-diagnostic structural analysis framework. Lived experience serves as the empirical starting point, not the model itself.</p>
-        <p class="cma14-colophon-meta">ORCID: <a href="https://orcid.org/0009-0004-9696-7896" target="_blank" rel="noopener noreferrer">0009-0004-9696-7896</a> | 文化庁登録 第41365号の1<br>Site Founded: 2026-06-12 | Last Revised: 2026-11-16</p>
-      </footer>
+      <SectionNav
+        prev={{ href: "/portal/about/", label: "← 08 About" }}
+        next={{ href: "/portal/contact/", label: "09 Contact お問い合わせ →" }}
+      />
     </div>
   </section>
 </PortalLayout>

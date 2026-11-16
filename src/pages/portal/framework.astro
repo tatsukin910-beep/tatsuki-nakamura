@@ -1,5 +1,6 @@
 ---
 import PortalLayout from '../../layouts/PortalLayout.astro';
+import SectionNav from '../../components/SectionNav.astro';
 ---
 
 <PortalLayout
@@ -115,11 +116,9 @@ import PortalLayout from '../../layouts/PortalLayout.astro';
         </div>
       </div>
 
-      <!-- 3方向ナビゲーション -->
-      <nav class="cma02-nav-area" aria-label="セクション案内">
-        <a href="/portal/" class="cma02-nav-btn">↑ HOMEへ戻る</a>
-        <a href="/portal/archive/" class="cma02-nav-btn">06 論文・一次資料へ →</a>
-      </nav>
+      <SectionNav
+        next={{ href: "/portal/archive/", label: "06 論文・一次資料へ →" }}
+      />
     </div>
   </section>
 </PortalLayout>
