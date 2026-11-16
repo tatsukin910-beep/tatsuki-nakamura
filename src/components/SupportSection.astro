@@ -1,0 +1,112 @@
+---
+import PayPalSupportButton from './PayPalSupportButton.astro';
+import SectionNav from './SectionNav.astro';
+---
+
+<section id="section14" class="wrap" lang="ja">
+  <div class="card">
+    <h2 class="title">14 ご支援について</h2>
+    <p class="lead">
+      研究は、支援がなくても同じ内容で公開します。受け取った支援で、結論や公開範囲は変えません。<br />
+      Support is optional. It does not change the research, or what is published.
+    </p>
+
+    <div class="grid">
+      <article>
+        <h3>X サブスクリプション</h3>
+        <p>Xでは書ききれなかった日常、記事になる前の考え、研究の途中を、もう少し近くで置く場所です。研究の正本ではありません。</p>
+        <a class="btn" href="https://x.com/tatsu97910/creator-subscriptions/subscribe" target="_blank" rel="noopener noreferrer">
+          Xでメンバーになる
+        </a>
+      </article>
+
+      <article>
+        <h3>CMA支援金（PayPal）</h3>
+        <p>サイトの維持や資料確保のために、任意の金額を受け付けています。一度きりの支援です。</p>
+        <PayPalSupportButton />
+      </article>
+    </div>
+
+    <p class="note">定義と論文の正本は、DOIです。支援のページは、その代わりではありません。</p>
+
+    <SectionNav
+      prev={{ href: "/portal/contact/", label: "← 09 お問い合わせ" }}
+      homeLabel="↑ 地図へ"
+    />
+  </div>
+</section>
+
+<style>
+  .wrap {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 16px 80px;
+    color: var(--cma-text);
+    font-family: "Noto Sans JP", system-ui, sans-serif;
+    scroll-margin-top: 80px;
+    overflow-wrap: anywhere;
+  }
+  .card {
+    background: var(--cma-surface);
+    border: 1px solid var(--cma-border);
+    border-radius: 24px;
+    padding: clamp(28px, 5vw, 56px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+  }
+  .title {
+    font-family: Georgia, "Noto Serif JP", serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    border-bottom: 3px solid var(--cma-gold);
+    padding-bottom: 0.8rem;
+    margin: 0 0 1rem;
+  }
+  .lead {
+    color: var(--cma-secondary);
+    line-height: 1.85;
+    margin: 0 0 1.6rem;
+  }
+  .grid {
+    display: grid;
+    gap: 16px;
+  }
+  article {
+    background: var(--cma-card-bg);
+    border: 1px solid var(--cma-border);
+    border-radius: 16px;
+    padding: 22px;
+  }
+  h3 {
+    font-size: 1.15rem;
+    margin: 0 0 8px;
+    color: var(--cma-text);
+  }
+  article p {
+    color: var(--cma-secondary);
+    line-height: 1.8;
+    margin: 0 0 14px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: var(--cma-gold);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    transition: background 0.2s ease;
+  }
+  .btn:hover { background: #8f6816; }
+  .note {
+    margin: 18px 0 0;
+    color: var(--cma-secondary);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn { transition: none; }
+  }
+</style>
