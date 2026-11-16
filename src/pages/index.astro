@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>中村達希 | Tatsuki Nakamura</title>
   <meta name="robots" content="noindex">
-  <meta name="description" content="リンクを踏んで、ここに来てくださったこと。それが、何より大切です。">
+  <meta name="description" content="ようこそ。研究の記録も、なにげない日常も、気になるところからゆっくりのぞいてみてください。">
   <style>
     :root {
       --bg-research: #FFFFFF;
@@ -26,25 +26,29 @@
       background-color: var(--bg-research);
       letter-spacing: 0.04em;
     }
-    .thanks {
+    .welcome-header {
       margin: 0;
-      padding: 1.25rem 8% 0;
+      padding: 2.5rem 8% 1.5rem;
       font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
-      font-size: 1.05rem;
-      line-height: 1.8;
+      font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+      line-height: 1.9;
+      color: var(--ink-main);
     }
     .split-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: calc(100vh - 5.5rem);
+      min-height: 60vh;
+      border-top: 1px solid var(--boundary);
+      border-bottom: 1px solid var(--boundary);
     }
     .split-pane {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 4rem 12%;
+      padding: 4.5rem 12%;
       text-decoration: none;
       color: inherit;
+      transition: background-color 0.2s ease;
     }
     .split-pane:focus-visible {
       outline: 3px solid var(--ink-main);
@@ -59,7 +63,7 @@
     .pane-daily:hover { background-color: #F0EAE0; }
     .scent-label {
       margin: 0 0 0.8rem;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       letter-spacing: 0.12em;
       color: var(--ink-sub);
     }
@@ -80,26 +84,57 @@
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .split-pane:hover .arrow-icon { transform: translateX(12px); }
+
+    .bottom-guide-area {
+      padding: 4rem 1.5rem 5.5rem;
+      background: linear-gradient(180deg, var(--bg-research) 0%, #FAF8F5 100%);
+    }
+    .bottom-guide-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+      color: var(--ink-main);
+      text-align: left;
+    }
+    .bottom-guide-catch {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0 0 1.25rem;
+      line-height: 1.6;
+      color: var(--ink-main);
+    }
+    .bottom-guide-desc {
+      font-size: 0.98rem;
+      line-height: 2.0;
+      color: var(--ink-sub);
+      margin: 0;
+    }
+
     @media (max-width: 768px) {
+      .welcome-header { padding: 2rem 1.5rem 1.25rem; }
       .split-layout {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
+        min-height: auto;
       }
       .pane-daily {
         border-left: none;
         border-top: 1px solid var(--boundary);
       }
-      .split-pane { padding: 3rem 2rem; }
-      .thanks { padding: 1.5rem 2rem 0; }
+      .split-pane { padding: 3.5rem 1.5rem; }
+      .bottom-guide-area { padding: 3rem 1.5rem 4.5rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       .arrow-icon { transition: none; }
       .split-pane:hover .arrow-icon { transform: none; }
+      .split-pane { transition: none; }
     }
   </style>
 </head>
 <body>
-  <p class="thanks">リンクを踏んで、ここに来てくださったこと。<br>それが、何より大切です。</p>
+  <header class="welcome-header">
+    <p>ようこそ。研究の記録も、なにげない日常も、気になるところからゆっくりのぞいてみてください。</p>
+  </header>
+
   <main class="split-layout" aria-label="二つの入口">
     <a href="/portal/" class="split-pane pane-research">
       <p class="scent-label">研究サイト</p>
@@ -116,5 +151,14 @@
       </svg>
     </a>
   </main>
+
+  <footer class="bottom-guide-area">
+    <div class="bottom-guide-inner">
+      <h3 class="bottom-guide-catch">研究のメモも、毎日あったことも、ここにあるよ。</h3>
+      <p class="bottom-guide-desc">
+        長い時間をかけて集めてきた資料やメモ、日常の出来事の記録をひとまとめにして、読みやすい形に整理することをねらいにしています。気になるところから、どうぞのぞいてみてね。
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
