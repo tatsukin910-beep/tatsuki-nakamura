@@ -1,0 +1,23 @@
+# Legacy root paths -> new portal English slugs
+/framework /portal/framework/ 301
+/framework/ /portal/framework/ 301
+/research /portal/archive/ 301
+/research/ /portal/archive/ 301
+/about /portal/about/ 301
+/about/ /portal/about/ 301
+/story /portal/about/ 301
+/story/ /portal/about/ 301
+/contact /portal/contact/ 301
+/contact/ /portal/contact/ 301
+
+# Numbered portal pages -> English slugs
+/portal/02 /portal/framework/ 301
+/portal/02.html /portal/framework/ 301
+/portal/06 /portal/archive/ 301
+/portal/06.html /portal/archive/ 301
+/portal/08 /portal/about/ 301
+/portal/08.html /portal/about/ 301
+/portal/09 /portal/contact/ 301
+/portal/09.html /portal/contact/ 301
+/portal/14 /portal/support/ 301
+/portal/14.html /portal/support/ 301

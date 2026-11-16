@@ -6,6 +6,6 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://tatsuki-nakamura.com',
   build: {
-    format: 'preserve',
+    format: 'directory',
   },
 });
