@@ -4,7 +4,7 @@
 
 確認用URL（Pages をオンにしたあと）: https://tatsukin910-beep.github.io/tatsuki-nakamura/
 
-定義の正本は Zenodo の Theory Definition v2.0 です。https://doi.org/10.5281/zenodo.21876469
+定義の正本は Zenodo の Theory Definition v2.1 です。 https://doi.org/10.5281/zenodo.24218373
 
 中村達希｜当事者研究者
 Complex Multilayered Abuse (CMA) © 2026 Tatsuki Nakamura
