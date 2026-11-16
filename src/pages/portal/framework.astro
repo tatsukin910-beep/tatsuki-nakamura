@@ -1,6 +1,7 @@
 ---
 import PortalLayout from '../../layouts/PortalLayout.astro';
 import SectionNav from '../../components/SectionNav.astro';
+import CmaLayerDiagram from '../../components/CmaLayerDiagram.astro';
 ---
 
 <PortalLayout
@@ -77,29 +78,9 @@ import SectionNav from '../../components/SectionNav.astro';
           <h3>位置の見取り図</h3>
           <p class="caption">上の四つは環境の維持に関わる構造層です。下の一つはその持続的な作用に伴って生じ得る影響を表しています。</p>
 
-          <div class="cma02-grid">
-            <div style="display:flex; flex-direction:column; gap:14px;">
-              <div class="cma02-node"><strong>L1｜孤立・情報遮断</strong><span lang="en">Isolation</span></div>
-              <div class="cma02-node"><strong>L3｜正常化・ガスライティング</strong><span lang="en">Normalization</span></div>
-            </div>
-            <div class="cma02-center">
-              <span>中心に見るもの</span>
-              <strong>閉鎖的で自己補強する構造</strong>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:14px;">
-              <div class="cma02-node"><strong>L2｜依存固定</strong><span lang="en">Dependency</span></div>
-              <div class="cma02-node"><strong>L4｜制度的無応答</strong><span lang="en">Non-Responsiveness</span></div>
-            </div>
-          </div>
+          <CmaLayerDiagram />
 
-          <div class="cma02-impact-area">
-            <span style="display:block; color:var(--cma-secondary); font-size:0.85rem; margin-bottom:10px;">長期的作用に伴う帰結（循環ループにはしない）</span>
-            <div class="cma02-impact-box">
-              <span class="label">L5 ・ 影響の層</span>
-              <strong>身体／記憶の断片化</strong>
-            </div>
-            <small>※この配置は関係性を整理するための説明用図式であり、確定した因果モデルではありません。</small>
-          </div>
+          <small style="display:block; margin-top:12px;">※この配置は関係性を整理するための説明用図式であり、確定した因果モデルではありません。</small>
         </div>
 
         <!-- 折りたたみ注記 -->

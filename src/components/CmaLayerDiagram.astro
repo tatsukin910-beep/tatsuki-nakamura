@@ -1,0 +1,373 @@
+---
+// Interactive & Accessible CMA 5-Layer Structural Diagram
+// L1-L4: Interacting structural layers sustaining a closed environment
+// L5: Asymmetric consequence of sustained adaptation (not part of the L1-L4 loop)
+---
+
+<div class="cma-diagram-wrap" id="cma-layer-diagram">
+  <div class="cma-diagram-controls" role="group" aria-label="層の選択">
+    <button type="button" class="cma-diag-btn is-active" data-layer="ALL" aria-pressed="true">全体</button>
+    <button type="button" class="cma-diag-btn" data-layer="L1" aria-pressed="false">L1 孤立</button>
+    <button type="button" class="cma-diag-btn" data-layer="L2" aria-pressed="false">L2 依存</button>
+    <button type="button" class="cma-diag-btn" data-layer="L3" aria-pressed="false">L3 正常化</button>
+    <button type="button" class="cma-diag-btn" data-layer="L4" aria-pressed="false">L4 制度的無応答</button>
+    <button type="button" class="cma-diag-btn is-impact" data-layer="L5" aria-pressed="false">L5 身体／記憶の断片化</button>
+  </div>
+
+  <div class="cma-diagram-svg-box">
+    <svg viewBox="0 0 680 420" class="cma-diagram-svg" role="img" aria-labelledby="cma-svg-title cma-svg-desc">
+      <title id="cma-svg-title">CMA 5層構造の見取り図</title>
+      <desc id="cma-svg-desc">L1からL4の4層が閉鎖的で自己補強する環境を形成し、その持続的作用の帰結としてL5（身体・記憶の断片化）が下方に位置づけられる非対称の構造図。</desc>
+
+      <defs>
+        <marker id="cma-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 10 5 L 0 9 z" fill="currentColor" />
+        </marker>
+      </defs>
+
+      <!-- L1-L4 閉鎖環境の輪郭 -->
+      <rect x="44" y="24" width="592" height="236" rx="18" class="cma-svg-enclosure" />
+      <text x="340" y="48" text-anchor="middle" class="cma-svg-enclosure-label">閉鎖的で自己補強する構造（環境維持層 L1〜L4）</text>
+
+      <!-- 相互接続線 (L1-L4) -->
+      <g class="cma-svg-edges" stroke-linecap="round">
+        <!-- L1 <-> L2 -->
+        <line x1="250" y1="96" x2="430" y2="96" class="cma-edge" data-connects="L1 L2" marker-end="url(#cma-arrow)" marker-start="url(#cma-arrow)" />
+        <!-- L3 <-> L4 -->
+        <line x1="250" y1="210" x2="430" y2="210" class="cma-edge" data-connects="L3 L4" marker-end="url(#cma-arrow)" marker-start="url(#cma-arrow)" />
+        <!-- L1 <-> L3 -->
+        <line x1="150" y1="126" x2="150" y2="180" class="cma-edge" data-connects="L1 L3" marker-end="url(#cma-arrow)" marker-start="url(#cma-arrow)" />
+        <!-- L2 <-> L4 -->
+        <line x1="530" y1="126" x2="530" y2="180" class="cma-edge" data-connects="L2 L4" marker-end="url(#cma-arrow)" marker-start="url(#cma-arrow)" />
+        <!-- 対角線 L1 <-> L4, L2 <-> L3 -->
+        <line x1="230" y1="122" x2="450" y2="184" class="cma-edge is-diagonal" data-connects="L1 L4" />
+        <line x1="450" y1="122" x2="230" y2="184" class="cma-edge is-diagonal" data-connects="L2 L3" />
+      </g>
+
+      <!-- 持続的作用の一方向矢印 (L1-L4 -> L5) -->
+      <g class="cma-svg-impact-edge">
+        <line x1="340" y1="260" x2="340" y2="306" class="cma-edge is-downward" data-connects="L1 L2 L3 L4 L5" marker-end="url(#cma-arrow)" />
+        <text x="352" y="288" class="cma-svg-down-label">持続的作用に伴う帰結（循環ループにはしない）</text>
+      </g>
+
+      <!-- 中心ラベル -->
+      <rect x="276" y="136" width="128" height="34" rx="17" class="cma-svg-center-pill" />
+      <text x="340" y="157" text-anchor="middle" class="cma-svg-center-text">相互補強</text>
+
+      <!-- L1 -->
+      <g class="cma-svg-node" data-node="L1" tabindex="0" role="button" aria-label="L1 孤立・情報遮断を選択">
+        <rect x="64" y="68" width="182" height="56" rx="12" />
+        <text x="80" y="92" class="node-code">L1</text>
+        <text x="108" y="92" class="node-title">孤立・情報遮断</text>
+        <text x="80" y="111" class="node-en">Isolation &amp; Blockade</text>
+      </g>
+
+      <!-- L2 -->
+      <g class="cma-svg-node" data-node="L2" tabindex="0" role="button" aria-label="L2 依存固定を選択">
+        <rect x="434" y="68" width="182" height="56" rx="12" />
+        <text x="450" y="92" class="node-code">L2</text>
+        <text x="478" y="92" class="node-title">依存固定</text>
+        <text x="450" y="111" class="node-en">Dependency Fixation</text>
+      </g>
+
+      <!-- L3 -->
+      <g class="cma-svg-node" data-node="L3" tabindex="0" role="button" aria-label="L3 正常化・ガスライティングを選択">
+        <rect x="64" y="182" width="182" height="56" rx="12" />
+        <text x="80" y="206" class="node-code">L3</text>
+        <text x="108" y="206" class="node-title">正常化・ガスライティング</text>
+        <text x="80" y="225" class="node-en">Normalization</text>
+      </g>
+
+      <!-- L4 -->
+      <g class="cma-svg-node" data-node="L4" tabindex="0" role="button" aria-label="L4 制度的無応答を選択">
+        <rect x="434" y="182" width="182" height="56" rx="12" />
+        <text x="450" y="206" class="node-code">L4</text>
+        <text x="478" y="206" class="node-title">制度的無応答</text>
+        <text x="450" y="225" class="node-en">Institutional Non-Responsiveness</text>
+      </g>
+
+      <!-- L5 (非対称・影響の層) -->
+      <g class="cma-svg-node is-impact-node" data-node="L5" tabindex="0" role="button" aria-label="L5 身体／記憶の断片化を選択">
+        <rect x="190" y="312" width="300" height="64" rx="14" />
+        <text x="340" y="336" text-anchor="middle" class="node-code">L5 ・ 影響の層（帰結）</text>
+        <text x="340" y="359" text-anchor="middle" class="node-title">身体／記憶の断片化</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="cma-diagram-detail" id="cma-diagram-detail" aria-live="polite">
+    <strong id="cma-detail-title">全体の位置関係（L1〜L4 と L5 の非対称性）</strong>
+    <p id="cma-detail-body">
+      上の四つ（L1〜L4）は環境の維持に関わる構造層であり、互いに補強し合って閉鎖環境を形成します。下の L5 は、その持続的な作用に伴って生じ得る帰結であり、L1〜L4 と同型の維持層ではありません。各層をクリックまたはタブキーで選択すると役割を確認できます。
+    </p>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById("cma-layer-diagram");
+    if (!root) return;
+
+    var descriptions = {
+      ALL: {
+        title: "全体の位置関係（L1〜L4 と L5 の非対称性）",
+        body: "上の四つ（L1〜L4）は環境の維持に関わる構造層であり、互いに補強し合って閉鎖環境を形成します。下の L5 は、その持続的な作用に伴って生じ得る帰結であり、L1〜L4 と同型の維持層ではありません。各層をクリックまたはタブキーで選択すると役割を確認できます。"
+      },
+      L1: {
+        title: "L1｜孤立・情報遮断（Isolation & Information Blockade）",
+        body: "外部との物理的・情報的・社会的な接点が制限され、支援や客観的な第三者の視点に触れる機会が狭められる構造。L2（依存）や L3（正常化）と結びつき、外部からの確認を難しくします。"
+      },
+      L2: {
+        title: "L2｜依存固定（Dependency Fixation）",
+        body: "生活資源、情報、承認などを特定の主体や環境に依存せざるを得ず、自力での離脱や選択肢の確保が困難になる構造。L1（孤立）や L4（制度的無応答）のもとで離脱の選択肢がさらに狭まります。"
+      },
+      L3: {
+        title: "L3｜正常化・ガスライティング（Normalization & Gaslighting）",
+        body: "不当な扱いが「当たり前」「当然のルール」とされ、違和感や認識を否定されることを通じて、問題を問題として認識しにくくなる構造。"
+      },
+      L4: {
+        title: "L4｜制度的無応答（Institutional Non-Responsiveness）",
+        body: "外部の機関や支援制度による応答が十分に機能せず、結果として既存の閉鎖環境の持続に関与してしまう状況。外部へ助けを求めても接続されないことで、L1〜L3 が維持されやすくなります。"
+      },
+      L5: {
+        title: "L5｜身体／記憶の断片化（長期的作用に伴う帰結）",
+        body: "閉鎖構造が持続するなかで生じ得る、身体反応や記憶の不連続性を記述する層です。環境を維持する L1〜L4 と同型の仕組みではなく、長期的作用に伴う帰結として位置づけられます（他層への戻りは現時点では研究上の仮説です）。"
+      }
+    };
+
+    var buttons = root.querySelectorAll(".cma-diag-btn");
+    var nodes = root.querySelectorAll(".cma-svg-node");
+    var edges = root.querySelectorAll(".cma-edge");
+    var titleEl = document.getElementById("cma-detail-title");
+    var bodyEl = document.getElementById("cma-detail-body");
+
+    function selectLayer(layer) {
+      var info = descriptions[layer] || descriptions.ALL;
+      if (titleEl) titleEl.textContent = info.title;
+      if (bodyEl) bodyEl.textContent = info.body;
+
+      buttons.forEach(function (btn) {
+        var active = btn.getAttribute("data-layer") === layer;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+
+      nodes.forEach(function (node) {
+        var id = node.getAttribute("data-node");
+        var isAll = layer === "ALL";
+        var isSelected = id === layer;
+        node.classList.toggle("is-selected", !isAll && isSelected);
+        node.classList.toggle("is-dimmed", !isAll && !isSelected);
+      });
+
+      edges.forEach(function (edge) {
+        var connects = (edge.getAttribute("data-connects") || "").split(" ");
+        var isAll = layer === "ALL";
+        var isRelated = connects.indexOf(layer) !== -1;
+        edge.classList.toggle("is-highlighted", !isAll && isRelated);
+        edge.classList.toggle("is-dimmed", !isAll && !isRelated);
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        selectLayer(btn.getAttribute("data-layer") || "ALL");
+      });
+    });
+
+    nodes.forEach(function (node) {
+      node.addEventListener("click", function () {
+        var target = node.getAttribute("data-node") || "ALL";
+        var current = root.querySelector(".cma-diag-btn.is-active");
+        if (current && current.getAttribute("data-layer") === target) {
+          selectLayer("ALL");
+        } else {
+          selectLayer(target);
+        }
+      });
+      node.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          node.click();
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  .cma-diagram-wrap {
+    margin-top: 18px;
+  }
+  .cma-diagram-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .cma-diag-btn {
+    min-height: 38px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--cma-border);
+    background: var(--cma-surface);
+    color: var(--cma-secondary);
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .cma-diag-btn:hover {
+    border-color: var(--cma-gold);
+    color: var(--cma-gold);
+  }
+  .cma-diag-btn.is-active {
+    background: var(--cma-gold-soft);
+    border-color: var(--cma-gold);
+    color: var(--cma-text);
+  }
+  .cma-diag-btn.is-impact.is-active {
+    border-color: var(--cma-impact);
+    color: var(--cma-impact);
+  }
+  .cma-diagram-svg-box {
+    background: var(--cma-surface);
+    border: 1px solid var(--cma-border);
+    border-radius: 16px;
+    padding: 12px;
+    overflow: hidden;
+  }
+  .cma-diagram-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: var(--cma-secondary);
+  }
+  .cma-svg-enclosure {
+    fill: var(--cma-card-bg);
+    stroke: var(--cma-border);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 5;
+  }
+  .cma-svg-enclosure-label {
+    font-size: 12px;
+    font-weight: 700;
+    fill: var(--cma-muted);
+  }
+  .cma-svg-center-pill {
+    fill: var(--cma-surface);
+    stroke: var(--cma-gold-faint);
+    stroke-width: 1.5;
+  }
+  .cma-svg-center-text {
+    font-size: 12px;
+    font-weight: 700;
+    fill: var(--cma-gold);
+  }
+  .cma-edge {
+    stroke: var(--cma-border);
+    stroke-width: 1.8;
+    transition: stroke 0.2s ease, opacity 0.2s ease, stroke-width 0.2s ease;
+  }
+  .cma-edge.is-diagonal {
+    stroke-dasharray: 4 4;
+    opacity: 0.7;
+  }
+  .cma-edge.is-downward {
+    stroke: var(--cma-impact);
+    stroke-width: 2;
+  }
+  .cma-edge.is-highlighted {
+    stroke: var(--cma-gold);
+    stroke-width: 2.5;
+    opacity: 1;
+  }
+  .cma-edge.is-dimmed {
+    opacity: 0.22;
+  }
+  .cma-svg-down-label {
+    font-size: 11px;
+    fill: var(--cma-secondary);
+  }
+  .cma-svg-node {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .cma-svg-node rect {
+    fill: var(--cma-surface);
+    stroke: var(--cma-border);
+    stroke-width: 1.6;
+    transition: stroke 0.2s ease, stroke-width 0.2s ease, fill 0.2s ease;
+  }
+  .cma-svg-node:hover rect,
+  .cma-svg-node:focus-visible rect {
+    stroke: var(--cma-gold);
+    stroke-width: 2.2;
+  }
+  .cma-svg-node:focus-visible {
+    outline: none;
+  }
+  .cma-svg-node.is-selected rect {
+    fill: var(--cma-gold-soft);
+    stroke: var(--cma-gold);
+    stroke-width: 2.5;
+  }
+  .cma-svg-node.is-impact-node rect {
+    stroke: var(--cma-impact);
+    stroke-dasharray: 5 3;
+  }
+  .cma-svg-node.is-impact-node.is-selected rect {
+    stroke-dasharray: none;
+    stroke-width: 2.5;
+  }
+  .cma-svg-node.is-dimmed {
+    opacity: 0.42;
+  }
+  .node-code {
+    font-size: 12px;
+    font-weight: 800;
+    fill: var(--cma-gold);
+    font-family: ui-monospace, monospace;
+  }
+  .is-impact-node .node-code {
+    fill: var(--cma-impact);
+  }
+  .node-title {
+    font-size: 14px;
+    font-weight: 700;
+    fill: var(--cma-text);
+  }
+  .node-en {
+    font-size: 10.5px;
+    fill: var(--cma-muted);
+  }
+  .cma-diagram-detail {
+    margin-top: 14px;
+    padding: 16px 18px;
+    background: var(--cma-surface);
+    border: 1px solid var(--cma-border);
+    border-left: 4px solid var(--cma-gold);
+    border-radius: 0 12px 12px 0;
+  }
+  .cma-diagram-detail strong {
+    display: block;
+    font-size: 0.96rem;
+    color: var(--cma-text);
+    margin-bottom: 6px;
+  }
+  .cma-diagram-detail p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--cma-secondary);
+    margin: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cma-diag-btn,
+    .cma-edge,
+    .cma-svg-node,
+    .cma-svg-node rect {
+      transition: none !important;
+    }
+  }
+</style>
