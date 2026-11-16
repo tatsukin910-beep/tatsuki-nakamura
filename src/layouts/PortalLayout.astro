@@ -7,6 +7,7 @@ interface Props {
   description: string;
   robots?: string;
   canonicalUrl?: string;
+  ogType?: "website" | "article";
   jsonLd?: string;
   homeHref?: string;
   gateHref?: string;
@@ -16,11 +17,40 @@ const {
   title,
   description,
   robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-  canonicalUrl = "https://tatsuki-nakamura.com/portal/",
+  canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://tatsuki-nakamura.com").toString(),
+  ogType = "article",
   jsonLd,
   homeHref = "/portal/",
   gateHref = "/"
 } = Astro.props;
+
+const defaultJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": canonicalUrl,
+  "name": title,
+  "description": description,
+  "inLanguage": "ja",
+  "isPartOf": {
+    "@id": "https://tatsuki-nakamura.com/#website"
+  },
+  "author": {
+    "@type": "Person",
+    "@id": "https://tatsuki-nakamura.com/#person",
+    "name": "中村達希",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "ORCID",
+      "value": "0009-0004-9696-7896",
+      "url": "https://orcid.org/0009-0004-9696-7896"
+    }
+  },
+  "about": {
+    "@id": "https://doi.org/10.5281/zenodo.24218373"
+  }
+});
+
+const structuredData = jsonLd ?? defaultJsonLd;
 ---
 
 <!DOCTYPE html>
@@ -34,9 +64,22 @@ const {
   <meta name="keywords" content="複合的多層的虐待,CMA,Complex Multilayered Abuse,当事者研究,支援困難,制度的無応答,ガスライティング,閉鎖環境">
   <meta name="robots" content={robots}>
   <meta name="theme-color" content="#0B1220">
-  {canonicalUrl && <link rel="canonical" href={canonicalUrl}>}
+  <link rel="canonical" href={canonicalUrl}>
+
+  <!-- OGP / SNS Share -->
+  <meta property="og:site_name" content="中村達希 公式研究サイト｜CMA">
+  <meta property="og:type" content={ogType}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@tatsu97910">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+
   <link rel="stylesheet" href="/assets/css/style.css">
-  {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+  <script type="application/ld+json" set:html={structuredData} />
   <slot name="head" />
 </head>
 <body>
