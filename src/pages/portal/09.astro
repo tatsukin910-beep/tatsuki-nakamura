@@ -1,0 +1,89 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro';
+---
+
+<PortalLayout
+  title="09 お問い合わせ・窓口｜CMA 公式研究サイト"
+  description="複合的多層的虐待（CMA）に関する取材・執筆のご相談、学術的なお問い合わせ、利用ガイドライン。"
+  canonicalUrl="https://tatsuki-nakamura.com/portal/09.html"
+>
+  <div id="section09">
+    <section id="cma09-content" class="cma09-wrap" aria-labelledby="s09-title" lang="ja">
+      <div class="cma09-card">
+        <h2 id="s09-title" class="cma09-title">09 Contact &amp; Guidelines</h2>
+        <p class="cma09-lead">
+          CMA（複合的多層的虐待）の研究に関心をお寄せいただき、ありがとうございます。<br>
+          取材や執筆のご相談、理論に関するお問い合わせは、以下の公式窓口よりお気軽にご連絡ください。
+        </p>
+
+        <div class="cma09-intent-grid">
+          <div class="cma09-intent-card">
+            <h3>メディア取材・執筆・登壇のご相談</h3>
+            <p>
+              当事者研究の歩みや、CMAフレームワークに関する取材・寄稿を歓迎しております。媒体の形式（Web、雑誌、学術誌など）は問いません。企画がまだ固まっていない段階でも、一緒に考えながら進めていくことが可能ですので、まずはお気軽にお声がけください。
+            </p>
+          </div>
+          <div class="cma09-intent-card">
+            <h3>理論・学術に関するお問い合わせ</h3>
+            <p>
+              CMAの理論定義（v2.1）に関する学術的なご質問や、他分野（福祉・心理・社会学など）からの知見の共有など、モデルを深めるためのオープンな対話を大切にしています。
+            </p>
+          </div>
+        </div>
+
+        <div class="cma09-action-box">
+          <h3 class="cma09-action-title">公式お問い合わせフォーム</h3>
+          <p class="cma09-action-desc">
+            以下のフォームよりメッセージをお送りください。<br>
+            確認次第、ご入力いただいたメールアドレス宛に返信いたします。
+          </p>
+
+          <form action="https://api.web3forms.com/submit" method="POST" class="cma09-form">
+            <input type="hidden" name="access_key" value="45eeba80-910b-476b-9333-a53851176f6d">
+            <input type="hidden" name="subject" value="【CMA研究サイト】新しいお問い合わせ">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+            <input type="text" name="name" class="cma09-input" placeholder="お名前 / 組織名" required>
+            <input type="email" name="email" class="cma09-input" placeholder="メールアドレス" required>
+            <textarea name="message" class="cma09-textarea" placeholder="お問い合わせ内容をご記入ください" required></textarea>
+
+            <button type="submit" class="cma09-btn-submit">
+              <span aria-hidden="true">✉</span>
+              <span>メッセージを送信する</span>
+            </button>
+          </form>
+
+          <div class="cma09-signature-block">
+            <strong>中村 達希</strong>（Tatsuki Nakamura）<br>
+            独立・当事者研究者<br>
+            Complex Multilayered Abuse（CMA／複合的多層的虐待）<br>
+            ORCID: <a href="https://orcid.org/0009-0004-9696-7896" target="_blank" rel="noopener noreferrer">0009-0004-9696-7896</a><br>
+            Web: <a href="https://tatsuki-nakamura.com">https://tatsuki-nakamura.com</a>
+          </div>
+        </div>
+
+        <div class="cma09-boundary">
+          ※ CMAは非診断的な枠組みであり、提唱者自身は医療・心理職ではありません。安全と倫理の観点から、個別ケースの臨床的なご相談や個人的なカウンセリングはお受けしておりませんので、あらかじめご了承ください。
+        </div>
+
+        <details class="cma09-details">
+          <summary class="cma09-summary">CMAの引用・ご利用について（ライセンス）</summary>
+          <div class="cma09-details-body">
+            <p>
+              CMAフレームワークはオープンアクセス（CC BY 4.0）です。出典（クレジットやDOI）を明記いただければ、事前のご連絡なく教育・研究・紹介等で自由にご利用いただけます。
+            </p>
+            <p style="margin-top:10px;font-size:0.85rem;color:var(--cma-muted);line-height:1.6;">
+              ※ 理論を独自に応用・改変される場合は、公式原典（v2.1）との相違点がわかるよう明記をお願いいたします。
+            </p>
+          </div>
+        </details>
+
+        <nav class="cma09-nav-area" aria-label="ページ内ナビゲーション">
+          <a href="08.html" class="cma09-nav-btn">← 08 プロフィールへ</a>
+          <a href="index.html" class="cma09-nav-btn">↑ 地図へ（HOME）</a>
+          <a href="14.html" class="cma09-nav-btn">14 ご支援へ →</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</PortalLayout>

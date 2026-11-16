@@ -1,0 +1,74 @@
+---
+import Header from '../components/Header.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  robots?: string;
+  canonicalUrl?: string;
+  jsonLd?: string;
+  homeHref?: string;
+  gateHref?: string;
+}
+
+const {
+  title,
+  description,
+  robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  canonicalUrl = "https://tatsuki-nakamura.com/portal/",
+  jsonLd,
+  homeHref = "/portal/",
+  gateHref = "/"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="author" content="中村達希 (Tatsuki Nakamura)">
+  <meta name="keywords" content="複合的多層的虐待,CMA,Complex Multilayered Abuse,当事者研究,支援困難,制度的無応答,ガスライティング,閉鎖環境">
+  <meta name="robots" content={robots}>
+  <meta name="theme-color" content="#0B1220">
+  {canonicalUrl && <link rel="canonical" href={canonicalUrl}>}
+  <link rel="stylesheet" href="/assets/css/style.css">
+  {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+</head>
+<body>
+  <a class="skip-link" href="#content">本文へ進む</a>
+  <p class="draft-bar">確認用の下書きです。本番の <a href="https://tatsuki-nakamura.com">tatsuki-nakamura.com</a> は切り替えていません。</p>
+  <div id="home" class="cma-home-root">
+    <Header homeHref={homeHref} gateHref={gateHref} />
+    <main id="content">
+      <slot />
+    </main>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var key = "cma-theme";
+      var root = document.documentElement;
+      var btn = document.getElementById("contrast-toggle");
+      var live = document.getElementById("theme-status");
+      function apply(on, announce) {
+        root.setAttribute("data-theme", on ? "invert" : "standard");
+        if (btn) btn.setAttribute("aria-pressed", on ? "true" : "false");
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", on ? "#111111" : "#FAF8F5");
+        try { localStorage.setItem(key, on ? "invert" : "standard"); } catch (e) {}
+        if (announce && live) live.textContent = on ? "白黒反転にしました" : "標準の色に戻しました";
+      }
+      var saved = null;
+      try { saved = localStorage.getItem(key); } catch (e) {}
+      var prefer = window.matchMedia("(prefers-contrast: more)").matches;
+      apply(saved ? saved === "invert" : prefer, false);
+      if (btn) btn.addEventListener("click", function () {
+        apply(root.getAttribute("data-theme") !== "invert", true);
+      });
+    })();
+  </script>
+</body>
+</html>

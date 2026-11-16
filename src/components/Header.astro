@@ -1,0 +1,33 @@
+---
+import OrbitalLogo from './OrbitalLogo.astro';
+
+interface Props {
+  versionText?: string;
+  homeHref?: string;
+  gateHref?: string;
+}
+
+const {
+  versionText = "参照定義：v2.1",
+  homeHref = "/portal/",
+  gateHref = "/"
+} = Astro.props;
+---
+
+<header id="cma-header">
+  <div class="inner">
+    <a class="gate-link" href={gateHref}>入口</a>
+    <a href={homeHref} class="brand-group" aria-label="CMA ホームへ">
+      <OrbitalLogo />
+      <div>
+        <div class="cma-title">CMA</div>
+        <div class="cma-sub">中村達希</div>
+      </div>
+    </a>
+    <div class="header-tools">
+      <button type="button" id="contrast-toggle" class="contrast-toggle" aria-pressed="false">白黒反転</button>
+      <p id="theme-status" class="visually-hidden" aria-live="polite"></p>
+      <div class="ver-badge">{versionText}</div>
+    </div>
+  </div>
+</header>

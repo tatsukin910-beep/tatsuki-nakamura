@@ -1,3 +1,6 @@
+---
+// Entrance (index.astro)
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -74,9 +77,9 @@
       fill: none;
       stroke: var(--ink-main);
       stroke-width: 1.5;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .split-pane:hover .arrow-icon { transform: translateX(12px); }
-    .arrow-icon { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     @media (max-width: 768px) {
       .split-layout {
         grid-template-columns: 1fr;
@@ -98,14 +101,14 @@
 <body>
   <p class="thanks">リンクを踏んで、ここに来てくださったこと。<br>それが、何より大切です。</p>
   <main class="split-layout" aria-label="二つの入口">
-    <a href="portal/" class="split-pane pane-research">
+    <a href="/portal/" class="split-pane pane-research">
       <p class="scent-label">研究サイト</p>
       <h2 class="scent-title">なぜ助けを求められなかったのか。<br>その理由を、人の心に戻さず、仕組みから考える。</h2>
       <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="square" stroke-linejoin="miter"/>
       </svg>
     </a>
-    <a href="life/" class="split-pane pane-daily">
+    <a href="/life/" class="split-pane pane-daily">
       <p class="scent-label">日常</p>
       <h2 class="scent-title">なにげない一日を、ここに置く。<br>研究のモデルには、しない。</h2>
       <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">

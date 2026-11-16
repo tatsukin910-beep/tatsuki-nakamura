@@ -1,0 +1,96 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro';
+---
+
+<PortalLayout
+  title="14 ご支援について｜CMA 公式研究サイト"
+  description="複合的多層的虐待（CMA）の研究活動、サイト維持、資料確保へのご支援・応援に関する案内。"
+  canonicalUrl="https://tatsuki-nakamura.com/portal/14.html"
+>
+  <section id="section14" class="cma14-support" aria-labelledby="s14-title" lang="ja">
+    <div class="cma08-inner">
+      <h2 id="s14-title" class="cma08-title">応援してくださる方へ</h2>
+
+      <article class="cma14-featured" aria-labelledby="s14-membership">
+        <h3 id="s14-membership">🐥 もう少し近くで、日々をのぞく場所</h3>
+        <p>
+          Xでは書ききれなかった日常や、これまでの人生のこと。<br>
+          記事になる前の考えごとや、研究の途中でふと思ったことも。
+        </p>
+        <p>研究だけではなく、ぼく自身のことを少しずつ置いています。</p>
+        <ul class="cma14-list">
+          <li>🌙 日常の裏側</li>
+          <li>🐥 これまでの人生の歩み</li>
+          <li>💭 記事になる前の考えごと</li>
+          <li>📚 ときどき研究の途中経過</li>
+        </ul>
+        <p><strong>気が向いたときに、ふらっと遊びに来てください。</strong></p>
+        <a href="https://x.com/tatsu97910/creator-subscriptions/subscribe" target="_blank" rel="noopener noreferrer" class="cma-btn cma-btn-membership">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          <span>🐥 メンバーになる</span>
+        </a>
+      </article>
+
+      <div class="cma14-split">
+        <article class="cma09-channel">
+          <h4>❤ CMA支援金</h4>
+          <p>いただいた応援は、サイトの維持や資料の確保など、活動を続けていくために大切に使わせていただきます。</p>
+          <div class="cma14-paypal-wrap">
+            <!-- 1. 確実に表示・遷移できるHTMLリンクボタン -->
+            <a href="https://www.paypal.com/ncp/payment/AQSBMHKVYJ3LC" target="_blank" rel="noopener noreferrer" class="cma-btn cma-btn-support">
+              <img class="cma-paypal-mark" src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="PayPal" width="80" height="20">
+              <span>❤ PayPalで応援する</span>
+            </a>
+            <!-- 2. 公式PayPalスクリプト -->
+            <script is:inline src="https://www.paypal.com/sdk/js?client-id=BAAltfwowJYFPkWUdUnFmzDUnbnghB06EqfvG5e-aH5umDPzRpQ8HljFD7rvQZLqaEZBg4HzvtgTqf99LY&components=hosted-buttons&disable-funding=venmo&currency=JPY"></script>
+            <div id="paypal-container-AQSBMHKVYJ3LC"></div>
+            <script is:inline>
+              if (window.paypal && window.paypal.HostedButtons) {
+                paypal.HostedButtons({
+                  hostedButtonId: "AQSBMHKVYJ3LC",
+                }).render("#paypal-container-AQSBMHKVYJ3LC");
+              }
+            </script>
+          </div>
+        </article>
+
+        <article class="cma09-channel contact">
+          <h4>✉ お問い合わせ</h4>
+          <p>CMAに関するご質問、取材のお申し込み、学術的な対話などのご連絡はこちらの窓口からお願いいたします。</p>
+          <a href="09.html" class="cma-btn cma-btn-contact">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <span>✉ お問い合わせ窓口へ</span>
+          </a>
+        </article>
+      </div>
+
+      <div class="cma14-disclaimer">
+        <p>※応援の有無によって、CMAの内容・結論・公開範囲が変わることはありません。</p>
+      </div>
+
+      <div class="cma14-nav-container">
+        <nav class="cma14-next" aria-label="前後の章">
+          <a href="08.html">← 08 About</a>
+          <a href="09.html">09 Contact お問い合わせ →</a>
+        </nav>
+        <nav class="cma14-nav-back" aria-label="ページ内ナビゲーション">
+          <a href="index.html" class="cma14-btn-home-back">
+            <span class="nav-arrow" aria-hidden="true">↑</span>
+            <span>HOMEへ戻る</span>
+            <span class="nav-sub" lang="en">Complex Multilayered Abuse (CMA)</span>
+          </a>
+        </nav>
+      </div>
+
+      <footer class="cma14-colophon" role="contentinfo">
+        <p><strong>License:</strong> Unless otherwise noted, official CMA theoretical texts and specifications are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
+        <p><strong>Scope Note:</strong> CMA is a non-diagnostic structural analysis framework. Lived experience serves as the empirical starting point, not the model itself.</p>
+        <p class="cma14-colophon-meta">ORCID: <a href="https://orcid.org/0009-0004-9696-7896" target="_blank" rel="noopener noreferrer">0009-0004-9696-7896</a> | 文化庁登録 第41365号の1<br>Site Founded: 2026-06-12 | Last Revised: 2026-11-16</p>
+      </footer>
+    </div>
+  </section>
+</PortalLayout>

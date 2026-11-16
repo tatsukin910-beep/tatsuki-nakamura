@@ -1,0 +1,125 @@
+---
+import PortalLayout from '../../layouts/PortalLayout.astro';
+---
+
+<PortalLayout
+  title="02 5層の役割と関係｜CMA 公式研究サイト"
+  description="複合的多層的虐待（CMA）の5層モデルの役割と関係性。閉鎖環境における孤立、依存、正常化、制度的無応答、および結果としての身体・記憶の断片化を構造的に解説。"
+  canonicalUrl="https://tatsuki-nakamura.com/portal/02.html"
+>
+  <section id="section02" class="cma02-section" lang="ja" aria-labelledby="cma02-title">
+    <div class="cma02-inner">
+      <div class="cma02-card">
+        <header class="cma02-header">
+          <span class="cma02-eyebrow">02 Framework</span>
+          <h2 id="cma02-title">5層の役割と関係</h2>
+          <p class="cma02-lead">閉鎖した環境において、虐待や排除が固定化しやすくなる仕組みを五つの層から捉えます。</p>
+          <p>当事者経験を出発点としつつ、個人の心の問題に還元せず、関係性と環境の維持構造を客観的に記述するためのモデルです。</p>
+          <small>参照定義: <a href="https://doi.org/10.5281/zenodo.24218373" target="_blank" rel="noopener noreferrer">Theory Definition v2.1</a></small>
+        </header>
+
+        <p class="cma02-path">読み方は上から順です。まず五つの層の役割を確認し、そのあと下部の見取り図で全体の位置関係を整理します。</p>
+
+        <!-- L1 -->
+        <div class="cma02-layer">
+          <div class="num">L1</div>
+          <div>
+            <h4>孤立・情報遮断</h4>
+            <span class="en" lang="en">Isolation &amp; Information Blockade</span>
+            <p>外部との物理的・情報的・社会的な接点が制限され、支援や客観的な第三者の視点に触れる機会が狭められる構造。</p>
+          </div>
+        </div>
+
+        <!-- L2 -->
+        <div class="cma02-layer">
+          <div class="num">L2</div>
+          <div>
+            <h4>依存固定</h4>
+            <span class="en" lang="en">Dependency Fixation</span>
+            <p>生活資源、情報、承認などを特定の主体や環境に依存せざるを得ず、自力での離脱や選択肢の確保が困難になる構造。</p>
+          </div>
+        </div>
+
+        <!-- L3 -->
+        <div class="cma02-layer">
+          <div class="num">L3</div>
+          <div>
+            <h4>正常化・ガスライティング</h4>
+            <span class="en" lang="en">Normalization &amp; Gaslighting</span>
+            <p>不当な扱いが「当たり前」「当然のルール」とされ、違和感や認識を否定されることを通じて、問題を問題として認識しにくくなる構造。</p>
+          </div>
+        </div>
+
+        <!-- L4 -->
+        <div class="cma02-layer">
+          <div class="num">L4</div>
+          <div>
+            <h4>制度的無応答</h4>
+            <span class="en" lang="en">Institutional Non-Responsiveness</span>
+            <p>外部の機関や支援制度による応答が十分に機能せず、結果として既存の閉鎖環境の持続に関与してしまう状況。</p>
+          </div>
+        </div>
+
+        <!-- L5 (非対称性: 長期的作用に伴う影響) -->
+        <div class="cma02-layer impact">
+          <div class="num">L5</div>
+          <div>
+            <span class="role">長期的作用に伴う影響</span>
+            <h4>身体／記憶の断片化</h4>
+            <span class="en" lang="en">Somatic &amp; Memory Fragmentation</span>
+            <p>閉鎖構造が持続するなかで生じ得る、身体反応や記憶の不連続性を記述する層です。環境を維持する L1〜L4 と同型の仕組みではなく、長期的作用に伴う帰結として位置づけられます（他層への戻りは現時点では研究上の仮説です）。</p>
+          </div>
+        </div>
+
+        <!-- 位置の見取り図 -->
+        <div class="cma02-model">
+          <h3>位置の見取り図</h3>
+          <p class="caption">上の四つは環境の維持に関わる構造層です。下の一つはその持続的な作用に伴って生じ得る影響を表しています。</p>
+
+          <div class="cma02-grid">
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <div class="cma02-node"><strong>L1｜孤立・情報遮断</strong><span lang="en">Isolation</span></div>
+              <div class="cma02-node"><strong>L3｜正常化・ガスライティング</strong><span lang="en">Normalization</span></div>
+            </div>
+            <div class="cma02-center">
+              <span>中心に見るもの</span>
+              <strong>閉鎖的で自己補強する構造</strong>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <div class="cma02-node"><strong>L2｜依存固定</strong><span lang="en">Dependency</span></div>
+              <div class="cma02-node"><strong>L4｜制度的無応答</strong><span lang="en">Non-Responsiveness</span></div>
+            </div>
+          </div>
+
+          <div class="cma02-impact-area">
+            <span style="display:block; color:var(--cma-secondary); font-size:0.85rem; margin-bottom:10px;">長期的作用に伴う帰結（循環ループにはしない）</span>
+            <div class="cma02-impact-box">
+              <span class="label">L5 ・ 影響の層</span>
+              <strong>身体／記憶の断片化</strong>
+            </div>
+            <small>※この配置は関係性を整理するための説明用図式であり、確定した因果モデルではありません。</small>
+          </div>
+        </div>
+
+        <!-- 折りたたみ注記 -->
+        <details class="cma02-details">
+          <summary>層の番号とモデルの運用について</summary>
+          <p>層の番号（L1〜L5）は発生の順序や重症度の順位を表すものではありません。各層を数値化して加算・評価する測定法は確立しておらず、CMAは個人の診断、治療、重症度の判定を目的とするものではありません。</p>
+        </details>
+
+        <!-- 実験図リンク -->
+        <div class="cma02-visual">
+          <h3>動態を可視化する試み</h3>
+          <p>各層の関係性や外部介入時の動態をインタラクティブに確認するための探索的シミュレーターです。</p>
+          <p><a href="https://cma-structural-dynam-pza8.bolt.host/" target="_blank" rel="noopener noreferrer">見取り図シミュレーターを開く ↗</a></p>
+        </div>
+      </div>
+
+      <!-- 3方向ナビゲーション -->
+      <nav class="cma02-nav-area" aria-label="セクション案内">
+        <a href="index.html" class="cma02-nav-btn">↑ HOMEへ戻る</a>
+        <a href="06.html" class="cma02-nav-btn">06 論文・一次資料へ →</a>
+      </nav>
+    </div>
+  </section>
+</PortalLayout>
