@@ -110,6 +110,17 @@
       margin: 0;
     }
 
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     @media (max-width: 768px) {
       .welcome-header { padding: 2rem 1.5rem 1.25rem; }
       .split-layout {
@@ -132,6 +143,7 @@
 </head>
 <body>
   <header class="welcome-header">
+    <h1 class="visually-hidden">中村達希｜研究サイトと日常の入口</h1>
     <p>ようこそ。研究の記録も、なにげない日常も、気になるところからゆっくりのぞいてみてください。</p>
   </header>
 
@@ -154,7 +166,7 @@
 
   <footer class="bottom-guide-area">
     <div class="bottom-guide-inner">
-      <h3 class="bottom-guide-catch">研究のメモも、毎日あったことも、ここにあるよ。</h3>
+      <h2 class="bottom-guide-catch">研究のメモも、毎日あったことも、ここにあるよ。</h2>
       <p class="bottom-guide-desc">
         長い時間をかけて集めてきた資料やメモ、日常の出来事の記録をひとまとめにして、読みやすい形に整理することをねらいにしています。気になるところから、どうぞのぞいてみてね。
       </p>
