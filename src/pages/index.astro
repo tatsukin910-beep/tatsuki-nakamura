@@ -1,4 +1,5 @@
 ---
+import StructuredData from '../components/StructuredData.astro';
 // Entrance (index.astro)
 ---
 <!DOCTYPE html>
@@ -20,6 +21,13 @@
   <meta name="twitter:site" content="@tatsu97910">
   <meta name="twitter:title" content="中村達希 | Tatsuki Nakamura">
   <meta name="twitter:description" content="ようこそ。研究の記録も、なにげない日常も、気になるところからゆっくりのぞいてみてください。">
+  <StructuredData
+    pageTitle="中村達希 | Tatsuki Nakamura"
+    pageDescription="ようこそ。研究の記録も、なにげない日常も、気になるところからゆっくりのぞいてみてください。"
+    pageUrl="https://tatsuki-nakamura.com/"
+    breadcrumbs={[{ name: "入口", url: "https://tatsuki-nakamura.com/" }]}
+    includeFaq={false}
+  />
   <style>
     :root {
       --bg-research: #FFFFFF;
