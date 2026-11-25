@@ -129,6 +129,18 @@ import StructuredData from '../components/StructuredData.astro';
       margin: 0;
     }
 
+    .profile-card {
+      margin-top: 1.25rem;
+      padding-left: 1rem;
+      border-left: 1px solid var(--boundary);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", sans-serif;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: var(--ink-sub);
+    }
+    .profile-card p { margin: 0; }
+    .profile-name { color: var(--ink-main); }
+
     .visually-hidden {
       position: absolute;
       width: 1px;
@@ -164,6 +176,10 @@ import StructuredData from '../components/StructuredData.astro';
   <header class="welcome-header">
     <h1 class="visually-hidden">中村達希｜研究サイトと日常の入口</h1>
     <p>ようこそ。研究の記録も、なにげない日常も、気になるところからゆっくりのぞいてみてください。</p>
+    <div class="profile-card">
+      <p class="profile-name">中村 達希 / Tatsuki Nakamura — Independent Lived-Experience Researcher（当事者研究者）</p>
+      <p class="profile-theory">Complex Multilayered Abuse (CMA) — Current Theory Definition: v2.1 (CC BY 4.0)</p>
+    </div>
   </header>
 
   <main class="split-layout" aria-label="二つの入口">
